@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./images/Padget.png"; // Replace with the actual path to your logo
+import logo from "../assets/Padget.png"; // Replace with the actual path to your logo
 
 const Header = () => {
   return (
