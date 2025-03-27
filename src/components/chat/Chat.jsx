@@ -25,79 +25,79 @@ export const Chat = ({
 
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-  // Define guide steps (example for "Guide for troubleshoot Pick and place position error")
+  // Define guide steps for troubleshooting (example: "Guide for troubleshoot Pick and place position error")
   const guideSteps = [
     {
-      description: "Step 1 : Go to Home Page ",
-      imageUrl: "/images/Error1/Slide1.JPG",// Ensure images are in the public folder
+      description: "Step 1: Go to Home Page",
+      imageUrl: "/images/Error1/Slide1.JPG",
     },
     {
-      description: "Step 2 : Select the Arrange - ArrIndic ",
+      description: "Step 2: Select the Arrange - ArrIndic",
       imageUrl: "/images/Error1/Slide2.JPG",
     },
     {
-        description: "Step 3 : Go to Arrange-parts Prepare Nozzle ",
-        imageUrl: "/images/Error1/Slide3.JPG",
-      },
-      {
-        description: "Step 4 : Select the option Feeder",
-        imageUrl: "/images/Error1/Slide4.JPG",
-      },
-      {
-        description: "Step 5 : Select the pickup position",
-        imageUrl: "/images/Error1/Slide5.JPG",
-      },
-      {
-        description: "Step 6 : Feeder list will be shown on the screen",
-        imageUrl: "/images/Error1/Slide6.JPG",
-      },
-      {
-        description: "Step 7 : Select the feeder location which have the pickup position error",
-        imageUrl: "/images/Error1/Slide7.JPG",
-      },
-      {
-        description: "Step 8 : Click on Teach Start",
-        imageUrl: "/images/Error1/Slide8.JPG",
-      },
-      {
-        description: "Step 9 : Teaching Window will be shown on the screen",
-        imageUrl: "/images/Error1/Slide9.JPG",
-      },
-      {
-        description: "Step 10 : Adjust The X-Y OFFSET Manually Check the Offset and fix the component to it's place using the X-Y Co-ordinate. Feed the offset for 2 to 3 times. ",
-        imageUrl: "/images/Error1/Slide10.JPG",
-      },
-      {
-        description: "Step 11 : Click on the Manual set to fix the offset ",
-        imageUrl: "/images/Error1/Slide11.JPG",
-      },
-      {
-        description: "Step 12 : Save option will appear click yes to save the Changes ",
-        imageUrl: "/images/Error1/Slide12.JPG",
-      },
-      {
-        description: "Step 13 : Go to home page again",
-        imageUrl: "/images/Error1/Slide13.JPG",
-      },
-      {
-        description: "Step 14 : Select the Arrange - ArrIndic",
-        imageUrl: "/images/Error1/Slide14.JPG",
-      },
-      {
-        description: "Step 15 : Go to Arrange-parts Prepare Nozzle",
-        imageUrl: "/images/Error1/Slide15.JPG",
-      },
-      {
-        description: "Step 16 : Select the TBL14",
-        imageUrl: "/images/Error1/Slide16.JPG",
-      },
-      {
-        description: "Step 17 : Click on Nozzle check",
-        imageUrl: "/images/Error1/Slide17.JPG",
-      },
+      description: "Step 3: Go to Arrange-parts Prepare Nozzle",
+      imageUrl: "/images/Error1/Slide3.JPG",
+    },
+    {
+      description: "Step 4: Select the option Feeder",
+      imageUrl: "/images/Error1/Slide4.JPG",
+    },
+    {
+      description: "Step 5: Select the pickup position",
+      imageUrl: "/images/Error1/Slide5.JPG",
+    },
+    {
+      description: "Step 6: Feeder list will be shown on the screen",
+      imageUrl: "/images/Error1/Slide6.JPG",
+    },
+    {
+      description: "Step 7: Select the feeder location which have the pickup position error",
+      imageUrl: "/images/Error1/Slide7.JPG",
+    },
+    {
+      description: "Step 8: Click on Teach Start",
+      imageUrl: "/images/Error1/Slide8.JPG",
+    },
+    {
+      description: "Step 9: Teaching Window will be shown on the screen",
+      imageUrl: "/images/Error1/Slide9.JPG",
+    },
+    {
+      description: "Step 10: Adjust The X-Y OFFSET Manually Check the Offset and fix the component to its place using the X-Y Co-ordinate. Feed the offset for 2 to 3 times.",
+      imageUrl: "/images/Error1/Slide10.JPG",
+    },
+    {
+      description: "Step 11: Click on the Manual set to fix the offset",
+      imageUrl: "/images/Error1/Slide11.JPG",
+    },
+    {
+      description: "Step 12: Save option will appear, click Yes to save the Changes",
+      imageUrl: "/images/Error1/Slide12.JPG",
+    },
+    {
+      description: "Step 13: Go to home page again",
+      imageUrl: "/images/Error1/Slide13.JPG",
+    },
+    {
+      description: "Step 14: Select the Arrange - ArrIndic",
+      imageUrl: "/images/Error1/Slide14.JPG",
+    },
+    {
+      description: "Step 15: Go to Arrange-parts Prepare Nozzle",
+      imageUrl: "/images/Error1/Slide15.JPG",
+    },
+    {
+      description: "Step 16: Select the TBL14",
+      imageUrl: "/images/Error1/Slide16.JPG",
+    },
+    {
+      description: "Step 17: Click on Nozzle check",
+      imageUrl: "/images/Error1/Slide17.JPG",
+    },
   ];
 
-  // Load voices (unchanged)
+  // Load available voices for text-to-speech
   useEffect(() => {
     const loadVoices = () => {
       const availableVoices = window.speechSynthesis.getVoices();
@@ -114,7 +114,7 @@ export const Chat = ({
     };
   }, []);
 
-  // Speech recognition functions (unchanged)
+  // Start speech recognition
   const startListening = () => {
     if (!SpeechRecognition) {
       console.error("Speech recognition not supported.");
@@ -150,6 +150,7 @@ export const Chat = ({
     setIsListening(true);
   };
 
+  // Stop speech recognition
   const stopListening = () => {
     if (recognitionRef.current) {
       recognitionRef.current.stop();
@@ -157,24 +158,23 @@ export const Chat = ({
     }
   };
 
-  // Speak function (unchanged)
+  // Speak text using selected voice
   const speak = (text) => {
-    if (showVideo) {
-      console.log("Video is showing, not speaking.");
-      return;
-    }
-    console.log("Speaking:", text);
+    if (showVideo) return;
     const synthesis = window.speechSynthesis;
     const utterance = new SpeechSynthesisUtterance(text);
+
     if (selectedVoice) utterance.voice = selectedVoice;
     utterance.pitch = 1;
     utterance.rate = 1;
+
     utterance.onstart = () => setIsSpeaking(true);
     utterance.onend = () => setIsSpeaking(false);
+
     synthesis.speak(utterance);
   };
 
-  // Speak latest bot response (unchanged)
+  // Automatically speak the latest bot response
   useEffect(() => {
     if (chatHistory.length > 0) {
       const lastResponse = chatHistory[chatHistory.length - 1].bot;
@@ -182,15 +182,15 @@ export const Chat = ({
     }
   }, [chatHistory]);
 
+  // Handle user input changes
   const handleUserInput = (e) => setUserInput(e.target.value);
 
-  // Handle form submission with structured mode
+  // Handle form submission (chat or guide mode)
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setShowVideo(false); // Reset showVideo to false for each submission
     const lowerInput = userInput.toLowerCase().trim();
-  
-    // Handle structured mode
+
+    // Handle structured guide mode
     if (isStructuredMode) {
       if (lowerInput === "yes") {
         const nextIndex = currentStepIndex + 1;
@@ -214,7 +214,7 @@ export const Chat = ({
       setUserInput("");
       return;
     }
-  
+
     // Enter structured mode if input starts with "guide"
     if (lowerInput.startsWith("guide")) {
       setIsStructuredMode(true);
@@ -226,8 +226,8 @@ export const Chat = ({
       setUserInput("");
       return;
     }
-  
-    // Handle video introduction requests
+
+    // Handle video introduction commands
     if (lowerInput.startsWith("introduce")) {
       const topic = lowerInput.replace("introduce", "").trim();
       const videoMapping = {
@@ -237,14 +237,14 @@ export const Chat = ({
       for (const [key, id] of Object.entries(videoMapping)) {
         if (topic.includes(key)) {
           setVideoId(id);
-          setShowVideo(true); // Set showVideo to true only for video requests
+          setShowVideo(true);
           setUserInput("");
           return;
         }
       }
     }
-  
-    // Handle regular queries
+
+    // Handle regular chat queries
     setLoading(true);
     try {
       const response = await axios.post(
@@ -260,6 +260,15 @@ export const Chat = ({
     } finally {
       setLoading(false);
     }
+  };
+
+  // Function to toggle chat visibility
+  const toggleChatVisibility = () => setIsChatOpen(!isChatOpen);
+
+  // Clear chat history
+  const handleClearChatHistory = () => {
+    setChatHistory([]);
+    setUserInput("");
   };
 
   return (
