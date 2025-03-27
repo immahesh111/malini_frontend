@@ -2,13 +2,12 @@ import React from "react";
 import logo from "../assets/Padget.png"; // Replace with the actual path to your logo
 
 const Header = () => {
-  const headerText = "Machine AI Line Integration and Notification IoT";
+  const headerText = "Machine AI Assistant";
   const words = headerText.split(' ');
 
   return (
     <div style={headerStyle}>
       <img src={logo} alt="Logo" style={logoStyle} />
-      <h1 style={headingStyle1}>Malini</h1>
       <h1 style={headingStyle}>
         {words.map((word, index) => (
           <span key={index}>
