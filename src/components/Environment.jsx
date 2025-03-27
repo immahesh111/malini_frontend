@@ -15,7 +15,7 @@ function EXREnvironment() {
   useEffect(() => {
     const loader = new EXRLoader();
     loader.load(
-      '/src/components/images/studio_small_08_4k.exr',
+      '/images/studio_small_08_4k.exr',
       (loadedTexture) => {
         loadedTexture.mapping = THREE.EquirectangularReflectionMapping;
         loadedTexture.rotation = Math.PI / 4;
@@ -66,13 +66,13 @@ export default function EnvironmentComp({ isSpeaking }) {
       }}>
         {isSpeaking ? (
           <img
-            src="/src/components/images/malini.gif" // Replace with your GIF path
+            src="/images/malini.gif" // Replace with your GIF path
             alt="Speaking GIF"
             style={{ width: '600px', height: '350px' }} // Adjustable size
           />
         ) : (
           <img
-            src="/src/components/images/malinipng.png"   // Replace with your PNG path
+            src="/images/malinipng.png"   // Replace with your PNG path
             alt="Idle PNG"
             style={{ width: '600px', height: '300px' }} // Same size as GIF
           />
