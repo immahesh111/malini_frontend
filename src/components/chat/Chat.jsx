@@ -19,85 +19,35 @@
 //   const [voices, setVoices] = useState([]);
 //   const [isChatOpen, setIsChatOpen] = useState(true);
 //   const [selectedVoice, setSelectedVoice] = useState(null);
-//   const [isStructuredMode, setIsStructuredMode] = useState(false); // Structured mode state
-//   const [currentStepIndex, setCurrentStepIndex] = useState(0); // Current step index
+//   const [isStructuredMode, setIsStructuredMode] = useState(false);
+//   const [currentStepIndex, setCurrentStepIndex] = useState(0);
 //   const recognitionRef = useRef(null);
+//   const contentRef = useRef(null); // Ref for scrolling to bottom
 
 //   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-//   // Define guide steps for troubleshooting (example: "Guide for troubleshoot Pick and place position error")
+//   // Guide steps remain unchanged
 //   const guideSteps = [
-//     {
-//       description: "Step 1: Go to Home Page",
-//       imageUrl: "/images/Error1/Slide1.JPG",
-//     },
-//     {
-//       description: "Step 2: Select the Arrange - ArrIndic",
-//       imageUrl: "/images/Error1/Slide2.JPG",
-//     },
-//     {
-//       description: "Step 3: Go to Arrange-parts Prepare Nozzle",
-//       imageUrl: "/images/Error1/Slide3.JPG",
-//     },
-//     {
-//       description: "Step 4: Select the option Feeder",
-//       imageUrl: "/images/Error1/Slide4.JPG",
-//     },
-//     {
-//       description: "Step 5: Select the pickup position",
-//       imageUrl: "/images/Error1/Slide5.JPG",
-//     },
-//     {
-//       description: "Step 6: Feeder list will be shown on the screen",
-//       imageUrl: "/images/Error1/Slide6.JPG",
-//     },
-//     {
-//       description: "Step 7: Select the feeder location which have the pickup position error",
-//       imageUrl: "/images/Error1/Slide7.JPG",
-//     },
-//     {
-//       description: "Step 8: Click on Teach Start",
-//       imageUrl: "/images/Error1/Slide8.JPG",
-//     },
-//     {
-//       description: "Step 9: Teaching Window will be shown on the screen",
-//       imageUrl: "/images/Error1/Slide9.JPG",
-//     },
-//     {
-//       description: "Step 10: Adjust The X-Y OFFSET Manually Check the Offset and fix the component to its place using the X-Y Co-ordinate. Feed the offset for 2 to 3 times.",
-//       imageUrl: "/images/Error1/Slide10.JPG",
-//     },
-//     {
-//       description: "Step 11: Click on the Manual set to fix the offset",
-//       imageUrl: "/images/Error1/Slide11.JPG",
-//     },
-//     {
-//       description: "Step 12: Save option will appear, click Yes to save the Changes",
-//       imageUrl: "/images/Error1/Slide12.JPG",
-//     },
-//     {
-//       description: "Step 13: Go to home page again",
-//       imageUrl: "/images/Error1/Slide13.JPG",
-//     },
-//     {
-//       description: "Step 14: Select the Arrange - ArrIndic",
-//       imageUrl: "/images/Error1/Slide14.JPG",
-//     },
-//     {
-//       description: "Step 15: Go to Arrange-parts Prepare Nozzle",
-//       imageUrl: "/images/Error1/Slide15.JPG",
-//     },
-//     {
-//       description: "Step 16: Select the TBL14",
-//       imageUrl: "/images/Error1/Slide16.JPG",
-//     },
-//     {
-//       description: "Step 17: Click on Nozzle check",
-//       imageUrl: "/images/Error1/Slide17.JPG",
-//     },
+//     { description: "Step 1: Go to Home Page", imageUrl: "/images/Error1/Slide1.JPG" },
+//     { description: "Step 2: Select the Arrange - ArrIndic", imageUrl: "/images/Error1/Slide2.JPG" },
+//     { description: "Step 3: Go to Arrange-parts Prepare Nozzle", imageUrl: "/images/Error1/Slide3.JPG" },
+//     { description: "Step 4: Select the option Feeder", imageUrl: "/images/Error1/Slide4.JPG" },
+//     { description: "Step 5: Select the pickup position", imageUrl: "/images/Error1/Slide5.JPG" },
+//     { description: "Step 6: Feeder list will be shown on the screen", imageUrl: "/images/Error1/Slide6.JPG" },
+//     { description: "Step 7: Select the feeder location which have the pickup position error", imageUrl: "/images/Error1/Slide7.JPG" },
+//     { description: "Step 8: Click on Teach Start", imageUrl: "/images/Error1/Slide8.JPG" },
+//     { description: "Step 9: Teaching Window will be shown on the screen", imageUrl: "/images/Error1/Slide9.JPG" },
+//     { description: "Step 10: Adjust The X-Y OFFSET Manually Check the Offset and fix the component to its place using the X-Y Co-ordinate. Feed the offset for 2 to 3 times.", imageUrl: "/images/Error1/Slide10.JPG" },
+//     { description: "Step 11: Click on the Manual set to fix the offset", imageUrl: "/images/Error1/Slide11.JPG" },
+//     { description: "Step 12: Save option will appear, click Yes to save the Changes", imageUrl: "/images/Error1/Slide12.JPG" },
+//     { description: "Step 13: Go to home page again", imageUrl: "/images/Error1/Slide13.JPG" },
+//     { description: "Step 14: Select the Arrange - ArrIndic", imageUrl: "/images/Error1/Slide14.JPG" },
+//     { description: "Step 15: Go to Arrange-parts Prepare Nozzle", imageUrl: "/images/Error1/Slide15.jpeg" },
+//     { description: "Step 16: Select the TBL14", imageUrl: "/images/Error1/Slide16.JPG" },
+//     { description: "Step 17: Click on Nozzle check", imageUrl: "/images/Error1/Slide17.JPG" },
 //   ];
 
-//   // Load available voices for text-to-speech
+//   // Load voices for text-to-speech
 //   useEffect(() => {
 //     const loadVoices = () => {
 //       const availableVoices = window.speechSynthesis.getVoices();
@@ -174,7 +124,7 @@
 //     synthesis.speak(utterance);
 //   };
 
-//   // Automatically speak the latest bot response
+//   // Auto-speak latest bot response
 //   useEffect(() => {
 //     if (chatHistory.length > 0) {
 //       const lastResponse = chatHistory[chatHistory.length - 1].bot;
@@ -182,15 +132,22 @@
 //     }
 //   }, [chatHistory]);
 
+//   // Auto-scroll to bottom when chat history updates
+//   useEffect(() => {
+//     if (contentRef.current) {
+//       contentRef.current.scrollTop = contentRef.current.scrollHeight;
+//     }
+//   }, [chatHistory]);
+
 //   // Handle user input changes
 //   const handleUserInput = (e) => setUserInput(e.target.value);
 
-//   // Handle form submission (chat or guide mode)
+//   // Handle form submission
 //   const handleSubmit = async (e) => {
 //     e.preventDefault();
 //     const lowerInput = userInput.toLowerCase().trim();
 
-//     // Handle structured guide mode
+//     // Structured guide mode
 //     if (isStructuredMode) {
 //       if (lowerInput === "yes") {
 //         const nextIndex = currentStepIndex + 1;
@@ -215,7 +172,7 @@
 //       return;
 //     }
 
-//     // Enter structured mode if input starts with "guide"
+//     // Enter structured mode
 //     if (lowerInput.startsWith("guide")) {
 //       setIsStructuredMode(true);
 //       setCurrentStepIndex(0);
@@ -233,6 +190,7 @@
 //       const videoMapping = {
 //         "smt process": "6_8EqJXzpXo",
 //         "pick and place mounter": "M2V7sUfwxpY",
+//         "aoi": "3gUVTFcJleE", // Added new video for AOI
 //       };
 //       for (const [key, id] of Object.entries(videoMapping)) {
 //         if (topic.includes(key)) {
@@ -244,7 +202,7 @@
 //       }
 //     }
 
-//     // Handle regular chat queries
+//     // Regular chat queries
 //     setLoading(true);
 //     try {
 //       const response = await axios.post(
@@ -262,7 +220,7 @@
 //     }
 //   };
 
-//   // Function to toggle chat visibility
+//   // Toggle chat visibility
 //   const toggleChatVisibility = () => setIsChatOpen(!isChatOpen);
 
 //   // Clear chat history
@@ -280,7 +238,7 @@
 //         <div className="chat-box">
 //           <div id="container">
 //             <div className="container-inner">
-//               <div className="content">
+//               <div className="content" ref={contentRef}>
 //                 {chatHistory.length === 0 ? (
 //                   <p className="welcome-message">
 //                     Welcome to the chat! Ask a question to start a conversation with the Padget AI Assistant Malini.
@@ -351,6 +309,7 @@ export const Chat = ({
   setVideoId,
   setShowImage,
   setImageUrl,
+  userName,
 }) => {
   const [userInput, setUserInput] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
@@ -362,11 +321,10 @@ export const Chat = ({
   const [isStructuredMode, setIsStructuredMode] = useState(false);
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const recognitionRef = useRef(null);
-  const contentRef = useRef(null); // Ref for scrolling to bottom
+  const contentRef = useRef(null);
 
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-  // Guide steps remain unchanged
   const guideSteps = [
     { description: "Step 1: Go to Home Page", imageUrl: "/images/Error1/Slide1.JPG" },
     { description: "Step 2: Select the Arrange - ArrIndic", imageUrl: "/images/Error1/Slide2.JPG" },
@@ -387,14 +345,13 @@ export const Chat = ({
     { description: "Step 17: Click on Nozzle check", imageUrl: "/images/Error1/Slide17.JPG" },
   ];
 
-  // Load voices for text-to-speech
   useEffect(() => {
     const loadVoices = () => {
       const availableVoices = window.speechSynthesis.getVoices();
       setVoices(availableVoices);
       const neerjaVoice = availableVoices.find((voice) =>
         voice.name === "Microsoft Neerja Online (Natural) - English (India) (Preview)"
-      );
+      ) || availableVoices[0]; // Fallback to first voice if Neerja not found
       if (neerjaVoice) setSelectedVoice(neerjaVoice);
     };
     loadVoices();
@@ -404,7 +361,14 @@ export const Chat = ({
     };
   }, []);
 
-  // Start speech recognition
+  useEffect(() => {
+    if (userName && chatHistory.length === 0) {
+      const welcomeMessage = `Welcome, ${userName}! How can I assist you today?`;
+      setChatHistory([{ bot: welcomeMessage }]);
+      speak(welcomeMessage); // Speak the welcome message immediately
+    }
+  }, [userName]);
+
   const startListening = () => {
     if (!SpeechRecognition) {
       console.error("Speech recognition not supported.");
@@ -440,7 +404,6 @@ export const Chat = ({
     setIsListening(true);
   };
 
-  // Stop speech recognition
   const stopListening = () => {
     if (recognitionRef.current) {
       recognitionRef.current.stop();
@@ -448,9 +411,8 @@ export const Chat = ({
     }
   };
 
-  // Speak text using selected voice
   const speak = (text) => {
-    if (showVideo) return;
+    if (showVideo || !text) return;
     const synthesis = window.speechSynthesis;
     const utterance = new SpeechSynthesisUtterance(text);
 
@@ -464,30 +426,25 @@ export const Chat = ({
     synthesis.speak(utterance);
   };
 
-  // Auto-speak latest bot response
   useEffect(() => {
-    if (chatHistory.length > 0) {
+    if (chatHistory.length > 0 && chatHistory[chatHistory.length - 1].bot !== `Welcome, ${userName}! How can I assist you today?`) {
       const lastResponse = chatHistory[chatHistory.length - 1].bot;
       speak(lastResponse);
     }
   }, [chatHistory]);
 
-  // Auto-scroll to bottom when chat history updates
   useEffect(() => {
     if (contentRef.current) {
       contentRef.current.scrollTop = contentRef.current.scrollHeight;
     }
   }, [chatHistory]);
 
-  // Handle user input changes
   const handleUserInput = (e) => setUserInput(e.target.value);
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     const lowerInput = userInput.toLowerCase().trim();
 
-    // Structured guide mode
     if (isStructuredMode) {
       if (lowerInput === "yes") {
         const nextIndex = currentStepIndex + 1;
@@ -512,7 +469,6 @@ export const Chat = ({
       return;
     }
 
-    // Enter structured mode
     if (lowerInput.startsWith("guide")) {
       setIsStructuredMode(true);
       setCurrentStepIndex(0);
@@ -524,13 +480,12 @@ export const Chat = ({
       return;
     }
 
-    // Handle video introduction commands
     if (lowerInput.startsWith("introduce")) {
       const topic = lowerInput.replace("introduce", "").trim();
       const videoMapping = {
         "smt process": "6_8EqJXzpXo",
         "pick and place mounter": "M2V7sUfwxpY",
-        "aoi": "3gUVTFcJleE", // Added new video for AOI
+        "aoi": "3gUVTFcJleE",
       };
       for (const [key, id] of Object.entries(videoMapping)) {
         if (topic.includes(key)) {
@@ -542,7 +497,6 @@ export const Chat = ({
       }
     }
 
-    // Regular chat queries
     setLoading(true);
     try {
       const response = await axios.post(
@@ -560,10 +514,8 @@ export const Chat = ({
     }
   };
 
-  // Toggle chat visibility
   const toggleChatVisibility = () => setIsChatOpen(!isChatOpen);
 
-  // Clear chat history
   const handleClearChatHistory = () => {
     setChatHistory([]);
     setUserInput("");
@@ -581,13 +533,23 @@ export const Chat = ({
               <div className="content" ref={contentRef}>
                 {chatHistory.length === 0 ? (
                   <p className="welcome-message">
-                    Welcome to the chat! Ask a question to start a conversation with the Padget AI Assistant Malini.
+                    {userName
+                      ? `Welcome, ${userName}! Ask a question to start a conversation with the Padget AI Assistant Malini.`
+                      : "Welcome to the chat! Ask a question to start a conversation with the Padget AI Assistant Malini."}
                   </p>
                 ) : (
                   chatHistory.map((chat, index) => (
                     <div key={index}>
-                      {chat.user && <p className="user-message"><strong>You:</strong> {chat.user}</p>}
-                      {chat.bot && <p className="teacher-response"><strong>Malini:</strong> {chat.bot}</p>}
+                      {chat.user && (
+                        <p className="user-message">
+                          <strong>You:</strong> {chat.user}
+                        </p>
+                      )}
+                      {chat.bot && (
+                        <p className="teacher-response">
+                          <strong>Malini:</strong> {chat.bot}
+                        </p>
+                      )}
                     </div>
                   ))
                 )}
