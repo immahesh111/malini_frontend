@@ -8,6 +8,7 @@ const Header = () => {
   return (
     <div style={headerStyle}>
       <img src={logo} alt="Logo" style={logoStyle} />
+      <h1 style={headingStyle1}>Malini</h1>
       <h1 style={headingStyle}>
         {words.map((word, index) => (
           <span key={index}>
@@ -45,7 +46,17 @@ const headingStyle = {
   fontSize: "30px",
   fontFamily: "Montserrat",
   margin: 10,
+  backgroundColor: "white", // White background behind the text
+  padding: "10px 20px", // Padding around the text for better spacing
+  borderRadius: "5px", // Optional: adds rounded corners to the background // Boldens the heading
+};
+
+const headingStyle1 = {
+  color: "#41407d", // Adjust based on your background
+  fontSize: "30px",
+  fontFamily: "Montserrat",
   fontWeight: "bold",
+  margin: 10,
   backgroundColor: "white", // White background behind the text
   padding: "10px 20px", // Padding around the text for better spacing
   borderRadius: "5px", // Optional: adds rounded corners to the background // Boldens the heading
