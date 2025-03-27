@@ -48,8 +48,7 @@ const headingStyle = {
   color: "#41407d", // Adjust based on your background
   fontSize: "20px",
   fontFamily: "Montserrat",
-  margin: 10,
-  backgroundColor: "white", // White background behind the text
+  margin: 10, // White background behind the text
   padding: "10px 20px", // Padding around the text for better spacing
   borderRadius: "5px", // Optional: adds rounded corners to the background
 };
