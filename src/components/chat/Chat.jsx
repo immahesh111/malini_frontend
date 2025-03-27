@@ -245,7 +245,7 @@ export const Chat = ({
     setLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/chatgpt",
+        "https://malini-backend.onrender.com/api/chatgpt",
         { message: userInput },
         { headers: { "Content-Type": "application/json" } }
       );
