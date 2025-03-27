@@ -159,17 +159,18 @@ export const Chat = ({
 
   // Speak function (unchanged)
   const speak = (text) => {
-    if (showVideo) return;
+    if (showVideo) {
+      console.log("Video is showing, not speaking.");
+      return;
+    }
+    console.log("Speaking:", text);
     const synthesis = window.speechSynthesis;
     const utterance = new SpeechSynthesisUtterance(text);
-
     if (selectedVoice) utterance.voice = selectedVoice;
     utterance.pitch = 1;
     utterance.rate = 1;
-
     utterance.onstart = () => setIsSpeaking(true);
     utterance.onend = () => setIsSpeaking(false);
-
     synthesis.speak(utterance);
   };
 
@@ -186,8 +187,9 @@ export const Chat = ({
   // Handle form submission with structured mode
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setShowVideo(false); // Reset showVideo to false for each submission
     const lowerInput = userInput.toLowerCase().trim();
-
+  
     // Handle structured mode
     if (isStructuredMode) {
       if (lowerInput === "yes") {
@@ -212,8 +214,8 @@ export const Chat = ({
       setUserInput("");
       return;
     }
-
-    // Enter structured mode if input starts with "Guide"
+  
+    // Enter structured mode if input starts with "guide"
     if (lowerInput.startsWith("guide")) {
       setIsStructuredMode(true);
       setCurrentStepIndex(0);
@@ -224,8 +226,8 @@ export const Chat = ({
       setUserInput("");
       return;
     }
-
-    // Existing video and regular query logic
+  
+    // Handle video introduction requests
     if (lowerInput.startsWith("introduce")) {
       const topic = lowerInput.replace("introduce", "").trim();
       const videoMapping = {
@@ -235,13 +237,14 @@ export const Chat = ({
       for (const [key, id] of Object.entries(videoMapping)) {
         if (topic.includes(key)) {
           setVideoId(id);
-          setShowVideo(true);
+          setShowVideo(true); // Set showVideo to true only for video requests
           setUserInput("");
           return;
         }
       }
     }
-
+  
+    // Handle regular queries
     setLoading(true);
     try {
       const response = await axios.post(
@@ -257,12 +260,6 @@ export const Chat = ({
     } finally {
       setLoading(false);
     }
-  };
-
-  const toggleChatVisibility = () => setIsChatOpen(!isChatOpen);
-  const handleClearChatHistory = () => {
-    setChatHistory([]);
-    setUserInput("");
   };
 
   return (
