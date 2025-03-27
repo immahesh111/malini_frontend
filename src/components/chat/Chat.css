@@ -16,7 +16,7 @@
   color: #000000;
   cursor: pointer;
   display: inline-block;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: -0.24px;
   margin: 0;
@@ -48,7 +48,7 @@
   left: 5px;
   z-index: 999;
   width: 300px; /* Fixed width */
-  height: 400px; /* Fixed height for the entire chat box */
+  height: 300px; /* Fixed height for the entire chat box */
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -124,7 +124,7 @@
   flex: 1;
   border: none;
   outline: none;
-  font-size: 16px;
+  font-size: 10px;
   padding: 5px;
   color: #333333;
   background-color: #f2f2f2;
@@ -135,7 +135,7 @@
   color: #ffffff;
   border: none;
   outline: none;
-  font-size: 16px;
+  font-size: 10px;
   padding: 5px 10px;
   border-radius: 20px;
   margin-left: 10px;
@@ -174,7 +174,7 @@
   border: 2px solid #7385c9;
   background: #7385c9;
   color: #fff;
-  font-size: 15px;
+  font-size: 10px;
   text-shadow: 1px 2px 3px #000000;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
