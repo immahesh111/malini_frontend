@@ -382,7 +382,7 @@ export const Chat = ({
     { description: "Step 12: Save option will appear, click Yes to save the Changes", imageUrl: "/images/Error1/Slide12.JPG" },
     { description: "Step 13: Go to home page again", imageUrl: "/images/Error1/Slide13.JPG" },
     { description: "Step 14: Select the Arrange - ArrIndic", imageUrl: "/images/Error1/Slide14.JPG" },
-    { description: "Step 15: Go to Arrange-parts Prepare Nozzle", imageUrl: "/images/Error1/Slide15.JPG" },
+    { description: "Step 15: Go to Arrange-parts Prepare Nozzle", imageUrl: "/images/Error1/Slide15.jpeg" },
     { description: "Step 16: Select the TBL14", imageUrl: "/images/Error1/Slide16.JPG" },
     { description: "Step 17: Click on Nozzle check", imageUrl: "/images/Error1/Slide17.JPG" },
   ];
