@@ -47,7 +47,7 @@
   bottom: 70px;
   left: 5px;
   z-index: 999;
-  width: 400px; /* Fixed width */
+  width: 300px; /* Fixed width */
   height: 400px; /* Fixed height for the entire chat box */
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 10px;
