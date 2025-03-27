@@ -29,71 +29,71 @@ export const Chat = ({
   const guideSteps = [
     {
       description: "Step 1 : Go to Home Page ",
-      imageUrl: "src/components/images/Error1/Slide1.JPG",// Ensure images are in the public folder
+      imageUrl: "/images/Error1/Slide1.JPG",// Ensure images are in the public folder
     },
     {
       description: "Step 2 : Select the Arrange - ArrIndic ",
-      imageUrl: "src/components/images/Error1/Slide2.JPG",
+      imageUrl: "/images/Error1/Slide2.JPG",
     },
     {
         description: "Step 3 : Go to Arrange-parts Prepare Nozzle ",
-        imageUrl: "src/components/images/Error1/Slide3.JPG",
+        imageUrl: "/images/Error1/Slide3.JPG",
       },
       {
         description: "Step 4 : Select the option Feeder",
-        imageUrl: "src/components/images/Error1/Slide4.JPG",
+        imageUrl: "/images/Error1/Slide4.JPG",
       },
       {
         description: "Step 5 : Select the pickup position",
-        imageUrl: "src/components/images/Error1/Slide5.JPG",
+        imageUrl: "/images/Error1/Slide5.JPG",
       },
       {
         description: "Step 6 : Feeder list will be shown on the screen",
-        imageUrl: "src/components/images/Error1/Slide6.JPG",
+        imageUrl: "/images/Error1/Slide6.JPG",
       },
       {
         description: "Step 7 : Select the feeder location which have the pickup position error",
-        imageUrl: "src/components/images/Error1/Slide7.JPG",
+        imageUrl: "/images/Error1/Slide7.JPG",
       },
       {
         description: "Step 8 : Click on Teach Start",
-        imageUrl: "src/components/images/Error1/Slide8.JPG",
+        imageUrl: "/images/Error1/Slide8.JPG",
       },
       {
         description: "Step 9 : Teaching Window will be shown on the screen",
-        imageUrl: "src/components/images/Error1/Slide9.JPG",
+        imageUrl: "/images/Error1/Slide9.JPG",
       },
       {
         description: "Step 10 : Adjust The X-Y OFFSET Manually Check the Offset and fix the component to it's place using the X-Y Co-ordinate. Feed the offset for 2 to 3 times. ",
-        imageUrl: "src/components/images/Error1/Slide10.JPG",
+        imageUrl: "/images/Error1/Slide10.JPG",
       },
       {
         description: "Step 11 : Click on the Manual set to fix the offset ",
-        imageUrl: "src/components/images/Error1/Slide11.JPG",
+        imageUrl: "/images/Error1/Slide11.JPG",
       },
       {
         description: "Step 12 : Save option will appear click yes to save the Changes ",
-        imageUrl: "src/components/images/Error1/Slide12.JPG",
+        imageUrl: "/images/Error1/Slide12.JPG",
       },
       {
         description: "Step 13 : Go to home page again",
-        imageUrl: "src/components/images/Error1/Slide13.JPG",
+        imageUrl: "/images/Error1/Slide13.JPG",
       },
       {
         description: "Step 14 : Select the Arrange - ArrIndic",
-        imageUrl: "src/components/images/Error1/Slide14.JPG",
+        imageUrl: "/images/Error1/Slide14.JPG",
       },
       {
         description: "Step 15 : Go to Arrange-parts Prepare Nozzle",
-        imageUrl: "src/components/images/Error1/Slide15.JPG",
+        imageUrl: "/images/Error1/Slide15.JPG",
       },
       {
         description: "Step 16 : Select the TBL14",
-        imageUrl: "src/components/images/Error1/Slide16.JPG",
+        imageUrl: "/images/Error1/Slide16.JPG",
       },
       {
         description: "Step 17 : Click on Nozzle check",
-        imageUrl: "src/components/images/Error1/Slide17.JPG",
+        imageUrl: "/images/Error1/Slide17.JPG",
       },
   ];
 
