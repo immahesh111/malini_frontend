@@ -363,7 +363,7 @@ export const Chat = ({
 
   useEffect(() => {
     if (userName && chatHistory.length === 0) {
-      const welcomeMessage = `Welcome, ${userName}! How can I assist you today?`;
+      const welcomeMessage = `Welcome, ${userName}! We Welcome you to our Grand Inaguration. At Padget, we take immense pride in our journey—from being a key player in the Make in India initiative to becoming a recognized leader in mobile production. With cutting-edge technology, a dedicated team, and a relentless pursuit of quality, we have built a strong foundation for the future. Today’s visit is a special occasion as we showcase our state-of-the-art product gallery, our roadmap for innovation, and the milestones that define our success. Your guidance and leadership continue to inspire us as we strive for greater efficiency, sustainability, and global expansion.`;
       setChatHistory([{ bot: welcomeMessage }]);
       speak(welcomeMessage); // Speak the welcome message immediately
     }
