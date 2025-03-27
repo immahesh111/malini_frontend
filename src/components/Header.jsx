@@ -2,13 +2,23 @@ import React from "react";
 import logo from "../assets/Padget.png"; // Replace with the actual path to your logo
 
 const Header = () => {
+  const headerText = "Machine AI Line Integration and Notification IoT";
+  const words = headerText.split(' ');
+
   return (
     <div style={headerStyle}>
       <img src={logo} alt="Logo" style={logoStyle} />
-      <h1 style={headingStyle}>Malini AI Assistant</h1>
+      <h1 style={headingStyle}>
+        {words.map((word, index) => (
+          <span key={index}>
+            <b>{word.charAt(0)}</b>{word.slice(1)}{' '}
+          </span>
+        ))}
+      </h1>
     </div>
   );
 };
+
 
 // Inline styles for simplicity
 const headerStyle = {
@@ -32,7 +42,7 @@ const logoStyle = {
 
 const headingStyle = {
   color: "#41407d", // Adjust based on your background
-  fontSize: "60px",
+  fontSize: "30px",
   fontFamily: "Montserrat",
   margin: 10,
   fontWeight: "bold",
