@@ -170,7 +170,7 @@ function YouTubeVideo({ videoId, onPlay, onEnd }) {
       style={{
         position: 'absolute',
         top: '50%',
-        left: '50%',
+        left: '60%',
         transform: 'translate(-50%, -50%)',
         width: '60vw',
         height: '80vh',
