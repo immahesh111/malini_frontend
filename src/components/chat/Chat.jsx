@@ -480,6 +480,15 @@ export const Chat = ({
       return;
     }
 
+    // Handle "Next" command
+  if (lowerInput === "next") {
+    const smtMessage = "Here, we employ advanced automation to ensure precision in printed circuit board (PCB) assembly. Our process begins with the Solder Paste Printing Machine, which accurately applies solder paste to PCB pads, laying the foundation for robust connections. Next, the Pick and Place Machine swiftly and precisely positions electronic components onto the boards. Finally, our Automated Optical Inspection (AOI) system meticulously examines each assembly to detect and correct any defects, ensuring the highest quality standards";
+    setChatHistory([...chatHistory, { user: userInput, bot: smtMessage }]);
+    speak(smtMessage);
+    setUserInput("");
+    return;
+  }
+
     if (lowerInput.startsWith("introduce")) {
       const topic = lowerInput.replace("introduce", "").trim();
       const videoMapping = {
