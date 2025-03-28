@@ -486,6 +486,8 @@ export const Chat = ({
         "smt process": "6_8EqJXzpXo",
         "pick and place mounter": "M2V7sUfwxpY",
         "aoi": "3gUVTFcJleE",
+        "screen printer": "ylVXhrGE55c",
+        "mounter": "MoukIPQa58Q",
       };
       for (const [key, id] of Object.entries(videoMapping)) {
         if (topic.includes(key)) {

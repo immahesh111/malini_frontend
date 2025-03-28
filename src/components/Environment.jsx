@@ -82,16 +82,15 @@
 //   );
 // }
 
-import { Gltf, Environment, CameraControls } from '@react-three/drei'
-import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { OrbitControls, useTexture } from '@react-three/drei'
+import { Gltf, Environment, CameraControls } from '@react-three/drei';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { OrbitControls, useTexture } from '@react-three/drei';
 import React, { Suspense, useRef, useEffect, useState } from "react";
-import {Avatar} from '../../public/models/Mahi-avatar'
-import {Classroom} from '../../public/models/Classroom'
+import { Avatar } from '../../public/models/Mahi-avatar';
+import { Classroom } from '../../public/models/Classroom';
 import * as THREE from "three";
 import { EXRLoader } from 'three/examples/jsm/Addons.js';
-import { suspend } from 'suspend-react'
-
+import { suspend } from 'suspend-react';
 
 function EXREnvironment() {
   const { scene } = useThree();
@@ -116,7 +115,7 @@ function EXREnvironment() {
   return null;
 }
 
-export default function EnvironmentComp({ isSpeaking }) {
+export default function EnvironmentComp({ isSpeaking, isVideoPlaying }) {
   const controlsRef = useRef();
 
   useEffect(() => {
@@ -144,11 +143,11 @@ export default function EnvironmentComp({ isSpeaking }) {
       <div style={{
         position: 'absolute',
         top: '15%',          // Adjustable: Distance from bottom
-        left: '10%',           // Adjustable: Centers horizontally
+        left: '10%',         // Adjustable: Centers horizontally
         transform: 'translateX(-50%)', // Centers the image/GIF
-        zIndex: 1,             // Ensures it appears above the canvas
+        zIndex: 1,           // Ensures it appears above the canvas
       }}>
-        {isSpeaking ? (
+        {isSpeaking || isVideoPlaying ? (
           <img
             src="/images/malini.gif" // Replace with your GIF path
             alt="Speaking GIF"
