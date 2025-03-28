@@ -1,50 +1,114 @@
-import React, { useEffect, useRef } from "react";
+// import React, { useEffect, useRef } from "react";
 
-const YouTubeVideo = ({ videoId, onEnd }) => {
+// const YouTubeVideo = ({ videoId, onEnd }) => {
+//   const playerRef = useRef(null);
+
+//   useEffect(() => {
+//     const tag = document.createElement("script");
+//     tag.src = "https://www.youtube.com/iframe_api";
+//     const firstScriptTag = document.getElementsByTagName("script")[0];
+//     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+//     window.onYouTubeIframeAPIReady = () => {
+//       playerRef.current = new window.YT.Player("youtube-player", {
+//         videoId: videoId,
+//         playerVars: { autoplay: 1, controls: 1 },
+//         events: {
+//           onStateChange: (event) => {
+//             if (event.data === window.YT.PlayerState.ENDED) {
+//               onEnd();
+//             }
+//           },
+//         },
+//       });
+//     };
+
+//     return () => {
+//       if (playerRef.current) {
+//         playerRef.current.destroy();
+//       }
+//     };
+//   }, [videoId, onEnd]);
+
+//   return (
+//     <div
+//       style={{
+//         position: "absolute",
+//         top: "60%",
+//         left: "75%",
+//         transform: "translate(-50%, -50%)",
+//         width: "80vw",
+//         height: "80vh",
+//         zIndex: 10,
+//       }}
+//     >
+//       <div id="youtube-player"></div>
+//     </div>
+//   );
+// };
+
+// export default YouTubeVideo;
+
+import { useEffect, useRef } from 'react';
+
+function YouTubeVideo({ videoId, onPlay, onEnd }) {
   const playerRef = useRef(null);
+  const containerRef = useRef(null);
 
   useEffect(() => {
-    const tag = document.createElement("script");
-    tag.src = "https://www.youtube.com/iframe_api";
-    const firstScriptTag = document.getElementsByTagName("script")[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    const loadPlayer = () => {
+      if (containerRef.current) {
+        const width = containerRef.current.clientWidth;
+        const height = containerRef.current.clientHeight;
 
-    window.onYouTubeIframeAPIReady = () => {
-      playerRef.current = new window.YT.Player("youtube-player", {
-        videoId: videoId,
-        playerVars: { autoplay: 1, controls: 1 },
-        events: {
-          onStateChange: (event) => {
-            if (event.data === window.YT.PlayerState.ENDED) {
-              onEnd();
-            }
+        playerRef.current = new window.YT.Player('youtube-player', {
+          videoId: videoId,
+          width: width,
+          height: height,
+          playerVars: { autoplay: 1, controls: 1 },
+          events: {
+            onStateChange: (event) => {
+              if (event.data === window.YT.PlayerState.PLAYING) {
+                onPlay();
+              } else if (event.data === window.YT.PlayerState.ENDED) {
+                onEnd();
+              }
+            },
           },
-        },
-      });
+        });
+      }
     };
+
+    window.onYouTubeIframeAPIReady = loadPlayer;
+
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
     return () => {
       if (playerRef.current) {
         playerRef.current.destroy();
       }
     };
-  }, [videoId, onEnd]);
+  }, [videoId, onPlay, onEnd]);
 
   return (
     <div
+      ref={containerRef}
       style={{
-        position: "absolute",
-        top: "60%",
-        left: "75%",
-        transform: "translate(-50%, -50%)",
-        width: "80vw",
-        height: "80vh",
-        zIndex: 10,
+        position: 'absolute',
+        top: '60%',
+        left: '75%',
+        transform: 'translate(-50%, -50%)',
+        width: '80vw',
+        height: '80vh',
+        zIndex: 20,
       }}
     >
-      <div id="youtube-player"></div>
+      <div id="youtube-player" style={{ border: '5px solid red' }}></div>
     </div>
   );
-};
+}
 
 export default YouTubeVideo;
