@@ -131,7 +131,7 @@ function App() {
     };
 
     const recognizeFace = async () => {
-      const labels = ["aarushi", "Mahi","Kamlesh Sir","Jagdeesh Sir", "nandini","Pavan Sir","Bupinder Sir","tripti"];
+      const labels = ["aarushi", "Mahi","President Mr. Kamlesh Mishra","Jagdeesh Sir", "nandini","Pavan Sir","Bupinder Sir","tripti"];
       const labeledDescriptors = await Promise.all(
         labels.map(async (label) => {
           try {
