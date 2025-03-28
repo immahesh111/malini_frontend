@@ -35,7 +35,7 @@ const YouTubeVideo = ({ videoId, onEnd }) => {
       style={{
         position: "absolute",
         top: "50%",
-        left: "50%",
+        right: "10%",
         transform: "translate(-50%, -50%)",
         width: "80vw",
         height: "80vh",
