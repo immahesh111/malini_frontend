@@ -65,14 +65,18 @@ function YouTubeVideo({ videoId, onPlay, onEnd }) {
           videoId: videoId,
           width: width,
           height: height,
-          playerVars: { autoplay: 1, controls: 1 },
+          playerVars: { autoplay: 1, controls: 1 }, // Autoplay and show controls
           events: {
             onStateChange: (event) => {
+              console.log('Player state:', event.data); // Debug state changes
               if (event.data === window.YT.PlayerState.PLAYING) {
-                onPlay();
+                onPlay(); // Call onPlay when video starts
               } else if (event.data === window.YT.PlayerState.ENDED) {
-                onEnd();
+                onEnd(); // Call onEnd only when video ends
               }
+            },
+            onError: (event) => {
+              console.error('YouTube Player Error:', event.data); // Log errors
             },
           },
         });
@@ -80,7 +84,6 @@ function YouTubeVideo({ videoId, onPlay, onEnd }) {
     };
 
     window.onYouTubeIframeAPIReady = loadPlayer;
-
     const tag = document.createElement('script');
     tag.src = 'https://www.youtube.com/iframe_api';
     const firstScriptTag = document.getElementsByTagName('script')[0];
@@ -88,7 +91,7 @@ function YouTubeVideo({ videoId, onPlay, onEnd }) {
 
     return () => {
       if (playerRef.current) {
-        playerRef.current.destroy();
+        playerRef.current.destroy(); // Clean up player on unmount
       }
     };
   }, [videoId, onPlay, onEnd]);
@@ -98,15 +101,15 @@ function YouTubeVideo({ videoId, onPlay, onEnd }) {
       ref={containerRef}
       style={{
         position: 'absolute',
-        top: '60%',
-        left: '75%',
+        top: '50%',
+        left: '50%',
         transform: 'translate(-50%, -50%)',
         width: '80vw',
         height: '80vh',
         zIndex: 20,
       }}
     >
-      <div id="youtube-player" style={{ border: '5px solid red' }}></div>
+      <div id="youtube-player"></div>
     </div>
   );
 }
