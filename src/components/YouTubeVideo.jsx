@@ -4,7 +4,6 @@ const YouTubeVideo = ({ videoId, onEnd }) => {
   const playerRef = useRef(null);
 
   useEffect(() => {
-    // Load YouTube Iframe API
     const tag = document.createElement("script");
     tag.src = "https://www.youtube.com/iframe_api";
     const firstScriptTag = document.getElementsByTagName("script")[0];
@@ -35,10 +34,11 @@ const YouTubeVideo = ({ videoId, onEnd }) => {
     <div
       style={{
         position: "absolute",
-        top: "20%",
-        right: "20%",
-        width: "900px",
-        height: "600px",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        width: "80vw",
+        height: "80vh",
         zIndex: 10,
       }}
     >

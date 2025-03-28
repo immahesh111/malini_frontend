@@ -427,7 +427,7 @@ export const Chat = ({
   };
 
   useEffect(() => {
-    if (chatHistory.length > 0 && chatHistory[chatHistory.length - 1].bot !== `Welcome, ${userName}! How can I assist you today?`) {
+    if (chatHistory.length > 0 && chatHistory[chatHistory.length - 1].user) {
       const lastResponse = chatHistory[chatHistory.length - 1].bot;
       speak(lastResponse);
     }
