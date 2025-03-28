@@ -102,7 +102,7 @@ function YouTubeVideo({ videoId, onEnd }) {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: '80vw',
+        width: '60vw',
         height: '80vh',
         zIndex: 20,
       }}
