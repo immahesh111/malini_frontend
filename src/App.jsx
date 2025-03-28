@@ -83,7 +83,7 @@ function App() {
 
   const handleVideoStart = () => {
     setIsVideoPlaying(true);
-    setIsInteracting(true);
+    //setIsInteracting(true);
   };
 
   const handleVideoEnd = () => {

@@ -51,50 +51,48 @@
 
 import { useEffect, useRef } from 'react';
 
-function YouTubeVideo({ videoId, onPlay, onEnd }) {
+function YouTubeVideo({ videoId, onEnd }) {
   const playerRef = useRef(null);
   const containerRef = useRef(null);
 
   useEffect(() => {
     const loadPlayer = () => {
-      if (containerRef.current) {
-        const width = containerRef.current.clientWidth;
-        const height = containerRef.current.clientHeight;
-
+      if (window.YT && window.YT.Player && containerRef.current) {
         playerRef.current = new window.YT.Player('youtube-player', {
           videoId: videoId,
-          width: width,
-          height: height,
-          playerVars: { autoplay: 1, controls: 1 }, // Autoplay and show controls
+          width: containerRef.current.clientWidth,
+          height: containerRef.current.clientHeight,
+          playerVars: { autoplay: 1, controls: 1 },
           events: {
             onStateChange: (event) => {
-              console.log('Player state:', event.data); // Debug state changes
-              if (event.data === window.YT.PlayerState.PLAYING) {
-                onPlay(); // Call onPlay when video starts
-              } else if (event.data === window.YT.PlayerState.ENDED) {
-                onEnd(); // Call onEnd only when video ends
+              console.log('Player state:', event.data);
+              if (event.data === window.YT.PlayerState.ENDED) {
+                onEnd();
               }
-            },
-            onError: (event) => {
-              console.error('YouTube Player Error:', event.data); // Log errors
             },
           },
         });
       }
     };
 
-    window.onYouTubeIframeAPIReady = loadPlayer;
-    const tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/iframe_api';
-    const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    if (window.YT && window.YT.Player) {
+      loadPlayer();
+    } else {
+      window.onYouTubeIframeAPIReady = loadPlayer;
+      if (!document.querySelector('script[src="https://www.youtube.com/iframe_api"]')) {
+        const tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/iframe_api';
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+      }
+    }
 
     return () => {
       if (playerRef.current) {
-        playerRef.current.destroy(); // Clean up player on unmount
+        playerRef.current.destroy();
       }
     };
-  }, [videoId, onPlay, onEnd]);
+  }, [videoId, onEnd]);
 
   return (
     <div
