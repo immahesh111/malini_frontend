@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 
-const YouTubeVideo = ({ videoId, onPlay, onEnd }) => {
+const YouTubeVideo = ({ videoId, onEnd }) => {
   const playerRef = useRef(null);
 
   useEffect(() => {
@@ -15,10 +15,8 @@ const YouTubeVideo = ({ videoId, onPlay, onEnd }) => {
         playerVars: { autoplay: 1, controls: 1 },
         events: {
           onStateChange: (event) => {
-            if (event.data === window.YT.PlayerState.PLAYING) {
-              onPlay(); // Call onPlay when the video starts playing
-            } else if (event.data === window.YT.PlayerState.ENDED) {
-              onEnd(); // Call onEnd when the video ends
+            if (event.data === window.YT.PlayerState.ENDED) {
+              onEnd();
             }
           },
         },
@@ -30,7 +28,7 @@ const YouTubeVideo = ({ videoId, onPlay, onEnd }) => {
         playerRef.current.destroy();
       }
     };
-  }, [videoId, onPlay, onEnd]);
+  }, [videoId, onEnd]);
 
   return (
     <div
