@@ -44,7 +44,7 @@
 /* Chat Box */
 .chat-box {
   position: fixed;
-  bottom: 70px;
+  bottom: 35px;
   left: 5px;
   z-index: 999;
   width: 300px; /* Fixed width */
