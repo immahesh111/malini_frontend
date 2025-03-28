@@ -485,7 +485,7 @@ export const Chat = ({
       const videoMapping = {
         "smt process": "6_8EqJXzpXo",
         "pick and place mounter": "M2V7sUfwxpY",
-        "aoi": "3gUVTFcJleE",
+        "aoi": "cI7MyFLv6dA",
         "screen printer": "ylVXhrGE55c",
         "mounter": "MoukIPQa58Q",
       };
