@@ -53,15 +53,15 @@ export const Chat = ({
     "mtk_sp_flash_tool_v6_iflash_01": {
       rootCause: {
         text: "1. These U2000 is BGA IC component. 2. This issue was occurrence due to mounting placement issue came in only one Array. 3. There is shifting issue came in single array. Due to Bridging issue came in 4 no.array only after Reflow.",
-        images: ["/images/failure1/rootcause1.jpg", "/images/failure1/rootcause2.jpg"]
+        images: ["/images/failure1/rootcause1.png", "/images/failure1/rootcause3.png"]
       },
       contaminationAction: {
         text: "1. According to X-ray there is Bridging issue. 2. Check SPI data found there was no any abnormal from Printer side placement. 3. When we check Mountined PCB before Reflow in X-ray then found only one arrnay in shfiting issue and same PCBA array Failed at BLT stage. 4. So first we Teach mounting placement from mounter and also teach BGA Ball pad to pad. 5. Incresses Pre-AOI detection Level at Line for detection Miner shfiting at Pre-AOI. 6. After Teach Both stage Mounting and AOI then take trail with 5 panel. Result is ok. Then allow for mask production. Now running ok.",
-        images: ["/images/failure1/contamination1.jpg", "/images/failure1/contamination2.jpg"]
+        images: ["/images/failure1/rootcause1.png", "/images/failure1/rootcause3.png"]
       },
       improvementAction: {
         text: "1. First Teach this component (U2000) PAD for all array from mounter. 2. For AOI detection also increase 100 to 77. 3. Remark Different on PCBA for identification after improvemnt PCBA. 4. After improvement check x-ray every hour 10*panel.",
-        images: ["/images/failure1/improvement1.jpg", "/images/failure1/improvement2.jpg"]
+        images: ["/images/failure1/rootcause1.png", "/images/failure1/rootcause3.png"]
       }
     }
     // Add more failure codes here as needed, e.g., "another_failure_code": { ... }
