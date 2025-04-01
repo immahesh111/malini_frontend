@@ -76,14 +76,14 @@ function App() {
   const [isInteracting, setIsInteracting] = useState(false);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [showImage, setShowImage] = useState(false);
-  const [imageUrl, setImageUrl] = useState(null);
+  const [imageUrls, setImageUrls] = useState([]); // Changed from imageUrl to support multiple images
   const [isRecognizing, setIsRecognizing] = useState(true);
   const [userName, setUserName] = useState(null);
   const videoRef = useRef(null);
 
   const handleVideoStart = () => {
     setIsVideoPlaying(true);
-    //setIsInteracting(true);
+    // setIsInteracting(true); // Uncomment if you want interaction to persist during video
   };
 
   const handleVideoEnd = () => {
@@ -131,7 +131,18 @@ function App() {
     };
 
     const recognizeFace = async () => {
-      const labels = ["aarushi", "Mahi","President Mr. Kamlesh Mishra","Jagdeesh Sir", "nandini","Pavan Sir","Bupinder Sir","tripti","Jagdish Sir","Jagdeesh Raj Sir"];
+      const labels = [
+        "aarushi",
+        "Mahi",
+        "President Mr. Kamlesh Mishra",
+        "Jagdeesh Sir",
+        "nandini",
+        "Pavan Sir",
+        "Bupinder Sir",
+        "tripti",
+        "Jagdish Sir",
+        "Jagdeesh Raj Sir",
+      ];
       const labeledDescriptors = await Promise.all(
         labels.map(async (label) => {
           try {
@@ -183,7 +194,8 @@ function App() {
               );
               const bestMatch = results[0];
               console.log("Recognition result:", bestMatch);
-              if (bestMatch.label !== "unknown" && bestMatch.distance < 0.6) { // Adjust threshold if needed
+              if (bestMatch.label !== "unknown" && bestMatch.distance < 0.6) {
+                // Adjust threshold if needed
                 setUserName(bestMatch.label);
                 setIsRecognizing(false);
                 clearInterval(interval);
@@ -266,7 +278,7 @@ function App() {
       {showVideo && (
         <YouTubeVideo videoId={videoId} onPlay={handleVideoStart} onEnd={handleVideoEnd} />
       )}
-      {showImage && <ImageDisplay imageUrl={imageUrl} />}
+      {showImage && <ImageDisplay imageUrls={imageUrls} />}
       <Chat
         isSpeaking={isSpeaking}
         showVideo={showVideo}
@@ -275,7 +287,7 @@ function App() {
         setShowVideo={setShowVideo}
         setVideoId={setVideoId}
         setShowImage={setShowImage}
-        setImageUrl={setImageUrl}
+        setImageUrls={setImageUrls} // Updated prop name
         userName={userName}
       />
     </div>
