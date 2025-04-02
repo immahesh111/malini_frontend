@@ -10,9 +10,10 @@ export const Chat = ({
   setShowVideo,
   setVideoId,
   setShowImage,
-  setImageUrls, // Updated from setImageUrl to handle multiple images
+  setImageUrls,
   userName,
 }) => {
+  // State declarations
   const [userInput, setUserInput] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -22,12 +23,14 @@ export const Chat = ({
   const [selectedVoice, setSelectedVoice] = useState(null);
   const [isStructuredMode, setIsStructuredMode] = useState(false);
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
-  const [activeFailureCode, setActiveFailureCode] = useState(null); // New state for failure code mode
+  const [currentGuideSteps, setCurrentGuideSteps] = useState(null); // New state for dynamic guide steps
+  const [activeFailureCode, setActiveFailureCode] = useState(null);
   const recognitionRef = useRef(null);
   const contentRef = useRef(null);
 
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
+  // General guide steps (unchanged)
   const guideSteps = [
     { description: "Step 1: Go to Home Page", imageUrl: "/images/Error1/Slide1.JPG" },
     { description: "Step 2: Select the Arrange - ArrIndic", imageUrl: "/images/Error1/Slide2.JPG" },
@@ -48,25 +51,49 @@ export const Chat = ({
     { description: "Step 17: Click on Nozzle check", imageUrl: "/images/Error1/Slide17.JPG" },
   ];
 
-  // Failure code data structure (dynamic and extensible)
+  // New troubleshooting data structure
+  const troubleshootingData = {
+    "ant_5_fail": [
+      { description: "Step 1: Start the rework process for the Main Logic Board (MLB)", imageUrl: "/images/ant5fail/1.jpeg" },
+      { description: "Step 2: Scan all MLBs to identify the component", imageUrl: "/images/ant5fail/1.jpeg" },
+      { description: "Step 3: Sort the MLB: Identify if it is M391_H02 or M391_A03", imageUrl: "/images/ant5fail/1.jpeg" },
+      { description: "Step 4: Perform Visual Inspection (VI) by CCD only", imageUrl: "/images/ant5fail/step4.jpg" },
+      { description: "Step 5: Check VI result: If VI passes, move to kitting and end the process", imageUrl: "/images/ant5fail/1.jpeg" },
+      { description: "Step 6: If VI fails, proceed to rework: For M391_H02, rework 7 times (7X) on both TOP and BOT sides; for M391_A03, rework 4 times (4X) on both TOP and BOT sides", imageUrl: "/images/ant5fail/1.jpeg" },
+      { description: "Step 7: Perform rework at the specified rework location", imageUrl: "/images/ant5fail/1.jpeg" },
+      { description: "Step 8: Conduct a debug BLT test on all stations", imageUrl: "/images/ant5fail/1.jpeg" },
+      { description: "Step 9: Check debug test result: If the test passes, capture the fixture pass log, move to kitting, and end the process", imageUrl: "/images/ant5fail/1.jpeg" },
+      { description: "Step 10: If the debug test fails, move to the Test Review Center (TRC)", imageUrl: "/images/ant5fail/1.jpeg" },
+      { description: "Step 11: Follow Work Instruction (WI) TRC to complete the process", imageUrl: "/images/ant5fail/1.jpeg" },
+      { description: "Step 12: End the rework process", imageUrl: "/images/ant5fail/1.jpeg" },
+    ],
+    // Add more error codes here in the future, e.g.,
+    // "another_error_code": [
+    //   { description: "Step 1: ...", imageUrl: "/images/another/step1.jpg" },
+    //   // ...
+    // ]
+  };
+
+  // Existing failure data (unchanged)
   const failureData = {
     "mtk_sp_flash_tool_v6_iflash_01": {
       rootCause: {
         text: "1. These U2000 is BGA IC component. 2. This issue was occurrence due to mounting placement issue came in only one Array. 3. There is shifting issue came in single array. Due to Bridging issue came in 4 no.array only after Reflow.",
-        images: ["/images/failure1/rootcause1.png", "/images/failure1/rootcause3.png"]
+        images: ["/images/failure1/rootcause1.png", "/images/failure1/rootcause3.png"],
       },
       contaminationAction: {
         text: "1. According to X-ray there is Bridging issue. 2. Check SPI data found there was no any abnormal from Printer side placement. 3. When we check Mountined PCB before Reflow in X-ray then found only one arrnay in shfiting issue and same PCBA array Failed at BLT stage. 4. So first we Teach mounting placement from mounter and also teach BGA Ball pad to pad. 5. Incresses Pre-AOI detection Level at Line for detection Miner shfiting at Pre-AOI. 6. After Teach Both stage Mounting and AOI then take trail with 5 panel. Result is ok. Then allow for mask production. Now running ok.",
-        images: ["/images/failure1/rootcause1.png", "/images/failure1/rootcause3.png"]
+        images: ["/images/failure1/rootcause1.png", "/images/failure1/rootcause3.png"],
       },
       improvementAction: {
         text: "1. First Teach this component (U2000) PAD for all array from mounter. 2. For AOI detection also increase 100 to 77. 3. Remark Different on PCBA for identification after improvemnt PCBA. 4. After improvement check x-ray every hour 10*panel.",
-        images: ["/images/failure1/rootcause1.png", "/images/failure1/rootcause3.png"]
-      }
-    }
-    // Add more failure codes here as needed, e.g., "another_failure_code": { ... }
+        images: ["/images/failure1/rootcause1.png", "/images/failure1/rootcause3.png"],
+      },
+    },
+    // Add more failure codes as needed
   };
 
+  // useEffect hooks (unchanged)
   useEffect(() => {
     const loadVoices = () => {
       const availableVoices = window.speechSynthesis.getVoices();
@@ -74,7 +101,7 @@ export const Chat = ({
       const neerjaVoice =
         availableVoices.find((voice) =>
           voice.name === "Microsoft Neerja Online (Natural) - English (India) (Preview)"
-        ) || availableVoices[0]; // Fallback to first voice if Neerja not found
+        ) || availableVoices[0];
       if (neerjaVoice) setSelectedVoice(neerjaVoice);
     };
     loadVoices();
@@ -88,10 +115,11 @@ export const Chat = ({
     if (userName && chatHistory.length === 0) {
       const welcomeMessage = `Welcome, It is my great honor and privilege to welcome our esteemed ${userName}, to this special demonstration of our Center of Excellence (COE) powered by AI. We Welcome you to our Grand Inaguration. At Padget, we take immense pride in our journey—from being a key player in the Make in India initiative to becoming a recognized leader in mobile production. With cutting-edge technology, a dedicated team, and a relentless pursuit of quality, we have built a strong foundation for the future. Today’s visit is a special occasion as we showcase our state-of-the-art product gallery, our roadmap for innovation, and the milestones that define our success. Your guidance and leadership continue to inspire us as we strive for greater efficiency, sustainability, and global expansion.`;
       setChatHistory([{ bot: welcomeMessage }]);
-      speak(welcomeMessage); // Speak the welcome message immediately
+      speak(welcomeMessage);
     }
   }, [userName]);
 
+  // Speech recognition functions (unchanged)
   const startListening = () => {
     if (!SpeechRecognition) {
       console.error("Speech recognition not supported.");
@@ -164,37 +192,46 @@ export const Chat = ({
 
   const handleUserInput = (e) => setUserInput(e.target.value);
 
+  // Updated handleSubmit function
   const handleSubmit = async (e) => {
     e.preventDefault();
     const lowerInput = userInput.toLowerCase().trim();
 
-    if (isStructuredMode) {
-      if (lowerInput === "yes") {
-        const nextIndex = currentStepIndex + 1;
-        if (nextIndex < guideSteps.length) {
-          setCurrentStepIndex(nextIndex);
-          const nextStep = guideSteps[nextIndex];
-          setChatHistory([...chatHistory, { user: userInput, bot: nextStep.description }]);
-          setImageUrls([nextStep.imageUrl]); // Set as array for consistency
-        } else {
-          setChatHistory([...chatHistory, { user: userInput, bot: "Guide completed. Thank you!" }]);
-          setIsStructuredMode(false);
-          setShowImage(false);
-          setImageUrls([]);
-        }
-      } else if (lowerInput === "exit") {
-        setChatHistory([...chatHistory, { user: userInput, bot: "Guide exited." }]);
-        setIsStructuredMode(false);
-        setShowImage(false);
-        setImageUrls([]);
-      } else {
-        setChatHistory([...chatHistory, { bot: "Please type 'Yes' to proceed or 'Exit' to quit." }]);
-      }
+    // Handle guide commands (general guide or troubleshooting)
+    if (lowerInput.startsWith("guide")) {
+      setCurrentGuideSteps(guideSteps);
+      setIsStructuredMode(true);
+      setCurrentStepIndex(0);
+      const firstStep = guideSteps[0];
+      setChatHistory([...chatHistory, { user: userInput, bot: firstStep.description }]);
+      setImageUrls([firstStep.imageUrl]);
+      setShowImage(true);
       setUserInput("");
       return;
     }
 
-    // Check for failure code
+    let troubleshootMatch;
+    if ((troubleshootMatch = lowerInput.match(/troubleshoot for (.+)/))) {
+      const errorCodeRaw = troubleshootMatch[1].trim();
+      const errorCode = errorCodeRaw.toLowerCase().replace(/\s+/g, '_');
+      if (troubleshootingData[errorCode]) {
+        setCurrentGuideSteps(troubleshootingData[errorCode]);
+        setIsStructuredMode(true);
+        setCurrentStepIndex(0);
+        const firstStep = troubleshootingData[errorCode][0];
+        setChatHistory([...chatHistory, { user: userInput, bot: firstStep.description }]);
+        setImageUrls([firstStep.imageUrl]);
+        setShowImage(true);
+        setUserInput("");
+        return;
+      } else {
+        setChatHistory([...chatHistory, { bot: "Sorry, I don't have troubleshooting steps for that error code." }]);
+        setUserInput("");
+        return;
+      }
+    }
+
+    // Handle failure code
     const normalizedInput = userInput.trim().toLowerCase();
     if (failureData[normalizedInput]) {
       setActiveFailureCode(normalizedInput);
@@ -238,18 +275,40 @@ export const Chat = ({
       }
     }
 
-    if (lowerInput.startsWith("guide")) {
-      setIsStructuredMode(true);
-      setCurrentStepIndex(0);
-      const firstStep = guideSteps[0];
-      setChatHistory([...chatHistory, { user: userInput, bot: firstStep.description }]);
-      setImageUrls([firstStep.imageUrl]); // Set as array
-      setShowImage(true);
-      setUserInput("");
-      return;
+    // Handle structured mode for "yes" and "exit"
+    if (isStructuredMode) {
+      if (lowerInput === "yes") {
+        const nextIndex = currentStepIndex + 1;
+        if (nextIndex < currentGuideSteps.length) {
+          setCurrentStepIndex(nextIndex);
+          const nextStep = currentGuideSteps[nextIndex];
+          setChatHistory([...chatHistory, { user: userInput, bot: nextStep.description }]);
+          setImageUrls([nextStep.imageUrl]);
+        } else {
+          setChatHistory([...chatHistory, { user: userInput, bot: "Guide completed. Thank you!" }]);
+          setIsStructuredMode(false);
+          setShowImage(false);
+          setImageUrls([]);
+          setCurrentGuideSteps(null);
+        }
+        setUserInput("");
+        return;
+      } else if (lowerInput === "exit") {
+        setChatHistory([...chatHistory, { user: userInput, bot: "Guide exited." }]);
+        setIsStructuredMode(false);
+        setShowImage(false);
+        setImageUrls([]);
+        setCurrentGuideSteps(null);
+        setUserInput("");
+        return;
+      } else {
+        setChatHistory([...chatHistory, { bot: "Please type 'Yes' to proceed or 'Exit' to quit." }]);
+        setUserInput("");
+        return;
+      }
     }
 
-    // Handle "Next" command
+    // Handle "next" command
     if (lowerInput === "next") {
       const smtMessage = "Here, we employ advanced automation to ensure precision in printed circuit board (PCB) assembly. Our process begins with the Solder Paste Printing Machine, which accurately applies solder paste to PCB pads, laying the foundation for robust connections. Next, the Pick and Place Machine swiftly and precisely positions electronic components onto the boards. Finally, our Automated Optical Inspection (AOI) system meticulously examines each assembly to detect and correct any defects, ensuring the highest quality standards";
       setChatHistory([...chatHistory, { user: userInput, bot: smtMessage }]);
@@ -257,6 +316,7 @@ export const Chat = ({
       return;
     }
 
+    // Handle "introduce" command
     if (lowerInput.startsWith("introduce")) {
       const topic = lowerInput.replace("introduce", "").trim();
       const videoMapping = {
@@ -276,6 +336,7 @@ export const Chat = ({
       }
     }
 
+    // Default: Send to API
     setLoading(true);
     try {
       const response = await axios.post(
@@ -298,11 +359,14 @@ export const Chat = ({
   const handleClearChatHistory = () => {
     setChatHistory([]);
     setUserInput("");
-    setActiveFailureCode(null); // Reset failure code mode on clear
+    setActiveFailureCode(null);
     setShowImage(false);
     setImageUrls([]);
+    setIsStructuredMode(false);
+    setCurrentGuideSteps(null);
   };
 
+  // Render (unchanged)
   return (
     <div className="chat-component">
       <button className="chat-button" onClick={toggleChatVisibility}>
