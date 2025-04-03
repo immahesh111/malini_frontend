@@ -67,6 +67,32 @@ export const Chat = ({
       { description: "Step 11: Follow Work Instruction (WI) TRC to complete the process", imageUrl: "/images/ant5fail/1.jpeg" },
       { description: "Step 12: End the rework process", imageUrl: "/images/ant5fail/1.jpeg" },
     ],
+    "BT_NSFT": [  
+      { description: "Step 1: Confirm the symptom: PCBA fail at RFT Stage matches the report", imageUrl: "/images/ant5fail/1.jpeg"  },
+      { description: "Step 2: Perform FA step 1: Confirm that the PCBA failed at the RFT stage", imageUrl: "/images/ant5fail/1.jpeg"  },
+      { description: "Step 3: Perform FA step 2: Conduct visual CCD inspection and identify abnormality at location U4812 (component reverse)", imageUrl: "/images/ant5fail/1.jpeg"  },
+      { description: "Step 4: Perform FA step 3: Check SPI and confirm no abnormality is found" , imageUrl: "/images/ant5fail/1.jpeg" },
+      { description: "Step 5: Perform FA step 4: Check Pre AOI and identify abnormality at location U4812", imageUrl: "/images/ant5fail/1.jpeg"  },
+      { description: "Step 6: Perform FA step 5: Check Pre AOI board image and confirm abnormality is found", imageUrl: "/images/ant5fail/1.jpeg"  },
+      { description: "Step 7: Perform FA step 6: Check Pre AOI data, note that the defect was detected the first time, operator worked on the specific location, but the second time AOI did not detect the problem", imageUrl: "/images/ant5fail/1.jpeg"  },
+      { description: "Step 8: Perform FA step 7: Check Post AOI and confirm no abnormality is found" , imageUrl: "/images/ant5fail/1.jpeg" },
+      { description: "Step 9: Perform FA step 8: TRC person remounts at U4812, then confirm that the PCBA passed", imageUrl: "/images/ant5fail/1.jpeg"  },
+      { description: "Step 10: Identify the root cause: Component reverse at location U4812" , imageUrl: "/images/ant5fail/1.jpeg" },
+      { description: "Step 11: Note the corrective action: [Corrective action not specified in the document]" , imageUrl: "/images/ant5fail/1.jpeg" }
+    ],
+    "NR_CAL_FAIL": [
+      { description: "Step 1: Confirm the symptom: PCBA fail at CAL Stage matches the report" , imageUrl: "/images/ant5fail/1.jpeg" },
+      { description: "Step 2: Perform FA step 1: Confirm that the PCBA failed at the CAL stage", imageUrl: "/images/ant5fail/1.jpeg"  },
+      { description: "Step 3: Perform FA step 2: Conduct visual CCD inspection and identify abnormality at location Con5501", imageUrl: "/images/ant5fail/1.jpeg"  },
+      { description: "Step 4: Perform FA step 3: Check SPI and confirm no abnormality is found" , imageUrl: "/images/ant5fail/1.jpeg" },
+      { description: "Step 5: Perform FA step 4: Check Pre AOI and identify abnormality at location CON5501" , imageUrl: "/images/ant5fail/1.jpeg" },
+      { description: "Step 6: Perform FA step 5: Check Pre AOI board image and identify abnormality in the coupler" , imageUrl: "/images/ant5fail/1.jpeg" },
+      { description: "Step 7: Perform FA step 6: After remount at Con5501, confirm that the PCBA passed" , imageUrl: "/images/ant5fail/1.jpeg" },
+      { description: "Step 8: Identify the root cause: Coupler shift at location Con5501" , imageUrl: "/images/ant5fail/1.jpeg" },
+      { description: "Step 9: Note the corrective action: [Corrective action not specified in the document]", imageUrl: "/images/ant5fail/1.jpeg"  }
+    ],
+
+
     // Add more error codes here in the future, e.g.,
     // "another_error_code": [
     //   { description: "Step 1: ...", imageUrl: "/images/another/step1.jpg" },
