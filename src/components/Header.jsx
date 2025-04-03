@@ -3,7 +3,7 @@ import logo from "../assets/Padget.png"; // Replace with the actual path to your
 
 const Header = () => {
   const mainHeaderText = "Malini AI Assistant";
-  const subHeaderText = "Machine AI Line Integration and Notification IoT";
+  const subHeaderText = "Machine AI Line Intelligence and Notification IoT";
   const subHeaderWords = subHeaderText.split(' ');
 
   return (
