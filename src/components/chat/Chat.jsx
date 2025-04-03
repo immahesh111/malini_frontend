@@ -67,7 +67,7 @@ export const Chat = ({
       { description: "Step 11: Follow Work Instruction (WI) TRC to complete the process", imageUrl: "/images/ant5fail/1.jpeg" },
       { description: "Step 12: End the rework process", imageUrl: "/images/ant5fail/1.jpeg" },
     ],
-    "BT_NSFT": [  
+    "bt_nsft": [  
       { description: "Step 1: Confirm the symptom: PCBA fail at RFT Stage matches the report", imageUrl: "/images/ant5fail/1.jpeg"  },
       { description: "Step 2: Perform FA step 1: Confirm that the PCBA failed at the RFT stage", imageUrl: "/images/ant5fail/1.jpeg"  },
       { description: "Step 3: Perform FA step 2: Conduct visual CCD inspection and identify abnormality at location U4812 (component reverse)", imageUrl: "/images/ant5fail/1.jpeg"  },
@@ -80,7 +80,7 @@ export const Chat = ({
       { description: "Step 10: Identify the root cause: Component reverse at location U4812" , imageUrl: "/images/ant5fail/1.jpeg" },
       { description: "Step 11: Note the corrective action: [Corrective action not specified in the document]" , imageUrl: "/images/ant5fail/1.jpeg" }
     ],
-    "NR_CAL_FAIL": [
+    "nr_cal_fail": [
       { description: "Step 1: Confirm the symptom: PCBA fail at CAL Stage matches the report" , imageUrl: "/images/ant5fail/1.jpeg" },
       { description: "Step 2: Perform FA step 1: Confirm that the PCBA failed at the CAL stage", imageUrl: "/images/ant5fail/1.jpeg"  },
       { description: "Step 3: Perform FA step 2: Conduct visual CCD inspection and identify abnormality at location Con5501", imageUrl: "/images/ant5fail/1.jpeg"  },
