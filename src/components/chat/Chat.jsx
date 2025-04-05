@@ -51,6 +51,7 @@ export const Chat = ({
     { description: "Step 17: Click on Nozzle check", imageUrl: "/images/Error1/Slide17.JPG" },
   ];
 
+
   // New troubleshooting data structure
   const troubleshootingData = {
     "ant_5_fail": [
@@ -255,6 +256,37 @@ export const Chat = ({
       { description: "Step 9: Identify the root cause: Uplift – C5208" },
       { description: "Step 10: Note the corrective action: Keep monitoring" }
     ],
+    "wait_for_blan_network_device_arrival_1": [
+      { description: "Step 1: Check in X Ray of that PCB and found shielded and component short at location SH3304 & C1806 (refer to Fig. 1)" },
+      { description: "Step 2: Check SPI and found good data (refer to Fig. 2)" },
+      { description: "Step 3: Check Pre-AOI and found no component issue at location C1806 (refer to Fig. 3)" },
+      { description: "Step 4: Check Post AOI and found shield shifting issue at location SH3304 (refer to Fig. 4)" },
+      { description: "Step 5: Move the feeder location from bottom to top side for shield SH3304 and give offset in y-axis 0.30 on component at location C1806 (refer to Fig. 4)" },
+      { description: "Step 6: Send 10 panels for X-ray and found result good (refer to Fig. 5)" },
+      { description: "Root Cause: Shield shifting at location SH3304" },
+      { description: "Improvement Action: Arrange one PE & Quality person to take follow up and send 05 panels on an hourly basis for X-ray" }
+    ],
+    "Rx_SC_Cal_LTE_B71_DlF617000_Rout38_RFRout133129_Cark0_4_CalIdx31_Step0_FE14_FELG2_Ant1_HPM_PathLoss": [
+      { description: "Step 1: Confirm the symptom: PCBA failure at BRD stage with 1.15% (706 pcs) fail rate, model KANSAS25_NA_SUPER/MB, location FL6904 (PN: S983E40305)" },
+      { description: "Step 2: Perform FA step 1: Analyze material and confirm it is bad (TRC analysis)" },
+      { description: "Step 3: Perform FA step 2: Conduct swap test with NG material on ok PCBA, confirming the same failure" },
+      { description: "Step 4: Perform FA step 3: Note the lack of substitute material and identify different Date Codes" },
+      { description: "Step 5: Perform FA step 4: Test different Date Codes and identify NG Date Code (DC-20241005)" },
+      { description: "Step 6: Perform FA step 5: Verify line stability with DC-2024103, confirming no further issues" },
+      { description: "Step 7: Identify the root cause: PCBA failure due to bad material at location FL6904 (NG Date Code DC-20241005)" },
+      { description: "Step 8: Note the improvement action: Use DC-2024103 on the line with no issues, provide feedback to IQC team, and validate with PE team through swap tests in TRC" }
+    ],
+    "MTK_SP_FLASH_TOOL_V6_IFLASH_01": [
+      { description: "Step 1: Confirm the symptom: PCBA failure at IFLASH stage with 0.58% (355 pcs) fail rate, model KANSAS_5G, location Shorting (U2000)" },
+      { description: "Step 2: Perform FA step 1: According to X-ray there is Bridging issue." },
+      { description: "Step 3: Perform FA step 2: Check SPI data found there was no any abnormal from Printer side placement." },
+      { description: "Step 4: Perform FA step 3: When we check Mounted PCB before Reflow in X-ray then found only one array in shifting issue and same PCBA array failed at BLT stage." },
+      { description: "Step 5: Perform FA step 4: So first we teach mounting placement from mounter and also teach BGA ball pad to pad." },
+      { description: "Step 6: Perform FA step 5: In-process Pre-AOI detection Level at Line for detection Miner shifting at Pre-AOI." },
+      { description: "Step 7: Perform FA step 6: After teach both stage Mounting and AOI then take trail with 5 panel result is Ok, then allow for mask production, now running ok." },
+      { description: "Step 8: Identify the root cause: These U2000 is BGA IC component. This issue was occurrence due to mounting placement issue came in only one array. There is shifting issue came in single array. Due to Bridging issue came in array only after Reflow." },
+      { description: "Step 9: Note the improvement action: First Teach this component (U2000) PAD for all array from mounter. For AOI detection also increase to 100 to 77. Remark Different on PCBA for identification after improvement PCBA. After improvement check X-ray every hour 10 panel." }
+    ],
 
 
     // Add more error codes here in the future, e.g.,
@@ -263,7 +295,6 @@ export const Chat = ({
     //   // ...
     // ]
   };
-
   // Existing failure data (unchanged)
   const failureData = {
     "mtk_sp_flash_tool_v6_iflash_01": {
@@ -279,6 +310,7 @@ export const Chat = ({
         text: "1. First Teach this component (U2000) PAD for all array from mounter. 2. For AOI detection also increase 100 to 77. 3. Remark Different on PCBA for identification after improvemnt PCBA. 4. After improvement check x-ray every hour 10*panel.",
         images: ["/images/failure1/rootcause1.png", "/images/failure1/rootcause3.png"],
       },
+
     },
     // Add more failure codes as needed
   };
