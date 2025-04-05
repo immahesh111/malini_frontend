@@ -31,25 +31,45 @@ export const Chat = ({
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
   // General guide steps (unchanged)
-  const guideSteps = [
-    { description: "Step 1: Go to Home Page", imageUrl: "/images/Error1/Slide1.JPG" },
-    { description: "Step 2: Select the Arrange - ArrIndic", imageUrl: "/images/Error1/Slide2.JPG" },
-    { description: "Step 3: Go to Arrange-parts Prepare Nozzle", imageUrl: "/images/Error1/Slide3.JPG" },
-    { description: "Step 4: Select the option Feeder", imageUrl: "/images/Error1/Slide4.JPG" },
-    { description: "Step 5: Select the pickup position", imageUrl: "/images/Error1/Slide5.JPG" },
-    { description: "Step 6: Feeder list will be shown on the screen", imageUrl: "/images/Error1/Slide6.JPG" },
-    { description: "Step 7: Select the feeder location which have the pickup position error", imageUrl: "/images/Error1/Slide7.JPG" },
-    { description: "Step 8: Click on Teach Start", imageUrl: "/images/Error1/Slide8.JPG" },
-    { description: "Step 9: Teaching Window will be shown on the screen", imageUrl: "/images/Error1/Slide9.JPG" },
-    { description: "Step 10: Adjust The X-Y OFFSET Manually Check the Offset and fix the component to its place using the X-Y Co-ordinate. Feed the offset for 2 to 3 times.", imageUrl: "/images/Error1/Slide10.JPG" },
-    { description: "Step 11: Click on the Manual set to fix the offset", imageUrl: "/images/Error1/Slide11.JPG" },
-    { description: "Step 12: Save option will appear, click Yes to save the Changes", imageUrl: "/images/Error1/Slide12.JPG" },
-    { description: "Step 13: Go to home page again", imageUrl: "/images/Error1/Slide13.JPG" },
-    { description: "Step 14: Select the Arrange - ArrIndic", imageUrl: "/images/Error1/Slide14.JPG" },
-    { description: "Step 15: Go to Arrange-parts Prepare Nozzle", imageUrl: "/images/Error1/Slide15.jpeg" },
-    { description: "Step 16: Select the TBL14", imageUrl: "/images/Error1/Slide16.JPG" },
-    { description: "Step 17: Click on Nozzle check", imageUrl: "/images/Error1/Slide17.JPG" },
-  ];
+  const guideSteps = {
+    "pickup_position_error": [
+      { description: "Step 1: Go to Home Page", imageUrl: "/images/Error1/Slide1.JPG" },
+      { description: "Step 2: Select the Arrange - ArrIndic", imageUrl: "/images/Error1/Slide2.JPG" },
+      { description: "Step 3: Go to Arrange-parts Prepare Nozzle", imageUrl: "/images/Error1/Slide3.JPG" },
+      { description: "Step 4: Select the option Feeder", imageUrl: "/images/Error1/Slide4.JPG" },
+      { description: "Step 5: Select the pickup position", imageUrl: "/images/Error1/Slide5.JPG" },
+      { description: "Step 6: Feeder list will be shown on the screen", imageUrl: "/images/Error1/Slide6.JPG" },
+      { description: "Step 7: Select the feeder location which have the pickup position error", imageUrl: "/images/Error1/Slide7.JPG" },
+      { description: "Step 8: Click on Teach Start", imageUrl: "/images/Error1/Slide8.JPG" },
+      { description: "Step 9: Teaching Window will be shown on the screen", imageUrl: "/images/Error1/Slide9.JPG" },
+      { description: "Step 10: Adjust The X-Y OFFSET Manually Check the Offset and fix the component to its place using the X-Y Co-ordinate. Feed the offset for 2 to 3 times.", imageUrl: "/images/Error1/Slide10.JPG" },
+      { description: "Step 11: Click on the Manual set to fix the offset", imageUrl: "/images/Error1/Slide11.JPG" },
+      { description: "Step 12: Save option will appear, click Yes to save the Changes", imageUrl: "/images/Error1/Slide12.JPG" },
+      { description: "Step 13: Go to home page again", imageUrl: "/images/Error1/Slide13.JPG" },
+      { description: "Step 14: Select the Arrange - ArrIndic", imageUrl: "/images/Error1/Slide14.JPG" },
+      { description: "Step 15: Go to Arrange-parts Prepare Nozzle", imageUrl: "/images/Error1/Slide15.jpeg" },
+      { description: "Step 16: Select the TBL14", imageUrl: "/images/Error1/Slide16.JPG" },
+      { description: "Step 17: Click on Nozzle check", imageUrl: "/images/Error1/Slide17.JPG" },
+    ],
+    "bom": [ 
+      { description: "Step 1: Connect to the VPN to ensure secure access to the system." },
+      { description: "Step 2: Open Windchill and log in using your credentials." },
+      { description: "Step 3: Navigate to the 'Task' section within Windchill." },
+      { description: "Step 4: Apply the filter to narrow down the relevant tasks." },
+      { description: "Step 5: Click on 'Acknowledgement' to access specific content." },
+      { description: "Step 6: Select the required content and download the Excel sheet." },
+      { description: "Step 7: Return to the 'Task' section and apply the filter again." },
+      { description: "Step 8: Click on the second ECN number and download another Excel sheet." },
+      { description: "Step 9: Publish the downloaded files to the department for review or further processing." },
+      { description: "Step 10: Merge all files for the day into a single document and create an MM file." },
+      { description: "Step 11: Send an email with the MM file to Pankaj for further actions." },
+      { description: "Step 12: Send an email with relevant details to Rashe Shyam for updates." },
+      { description: "Step 13: Send an email with necessary information to Rakesh for review or approval." },
+      { description: "Step 14: From the three emails sent, take screenshots of approval responses from each recipient." },
+      { description: "Step 15: Share screenshots of approval responses with Sapna for record-keeping or next steps." }
+    ],
+  };
+
 
 
   // New troubleshooting data structure
@@ -420,17 +440,42 @@ export const Chat = ({
     const lowerInput = userInput.toLowerCase().trim();
 
     // Handle guide commands (general guide or troubleshooting)
-    if (lowerInput.startsWith("guide")) {
-      setCurrentGuideSteps(guideSteps);
-      setIsStructuredMode(true);
-      setCurrentStepIndex(0);
-      const firstStep = guideSteps[0];
-      setChatHistory([...chatHistory, { user: userInput, bot: firstStep.description }]);
-      setImageUrls([firstStep.imageUrl]);
-      setShowImage(true);
-      setUserInput("");
-      return;
+    // if (lowerInput.startsWith("guide")) {
+    //   setCurrentGuideSteps(guideSteps);
+    //   setIsStructuredMode(true);
+    //   setCurrentStepIndex(0);
+    //   const firstStep = guideSteps[0];
+    //   setChatHistory([...chatHistory, { user: userInput, bot: firstStep.description }]);
+    //   setImageUrls([firstStep.imageUrl]);
+    //   setShowImage(true);
+    //   setUserInput("");
+    //   return;
+    // }
+
+    let guide;
+    if ((guide = lowerInput.match(/guide for (.+)/))) {
+      const errorCodeRaw = guide[1].trim();
+      const errorCode = errorCodeRaw.toLowerCase().replace(/\s+/g, '_');
+      if (guideSteps[errorCode]) {
+        setCurrentGuideSteps(guideSteps[errorCode]);
+        setIsStructuredMode(true);
+        setCurrentStepIndex(0);
+        const firstStep = guideSteps[errorCode][0];
+        setChatHistory([...chatHistory, { user: userInput, bot: firstStep.description }]);
+        setImageUrls([firstStep.imageUrl]);
+        setShowImage(true);
+        setUserInput("");
+        return;
+      } else {
+        setChatHistory([...chatHistory, { bot: "Sorry, I don't have guide steps for that process." }]);
+        setUserInput("");
+        return;
+      }
     }
+
+
+
+
 
     let troubleshootMatch;
     if ((troubleshootMatch = lowerInput.match(/troubleshoot for (.+)/))) {
