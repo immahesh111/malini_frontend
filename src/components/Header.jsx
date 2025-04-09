@@ -1,5 +1,6 @@
-import React from "react";
+import React from "react";                            
 import logo from "../assets/Padget.png"; // Replace with the actual path to your logo
+
 
 const Header = () => {
   const mainHeaderText = "Malini AI Assistant";

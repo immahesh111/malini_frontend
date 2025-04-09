@@ -52,21 +52,22 @@ export const Chat = ({
       { description: "Step 17: Click on Nozzle check", imageUrl: "/images/Error1/Slide17.JPG" },
     ],
     "bom": [ 
-      { description: "Step 1: Connect to the VPN to ensure secure access to the system." },
-      { description: "Step 2: Open Windchill and log in using your credentials." },
-      { description: "Step 3: Navigate to the 'Task' section within Windchill." },
-      { description: "Step 4: Apply the filter to narrow down the relevant tasks." },
-      { description: "Step 5: Click on 'Acknowledgement' to access specific content." },
-      { description: "Step 6: Select the required content and download the Excel sheet." },
-      { description: "Step 7: Return to the 'Task' section and apply the filter again." },
-      { description: "Step 8: Click on the second ECN number and download another Excel sheet." },
-      { description: "Step 9: Publish the downloaded files to the department for review or further processing." },
-      { description: "Step 10: Merge all files for the day into a single document and create an MM file." },
-      { description: "Step 11: Send an email with the MM file to Pankaj for further actions." },
-      { description: "Step 12: Send an email with relevant details to Rashe Shyam for updates." },
-      { description: "Step 13: Send an email with necessary information to Rakesh for review or approval." },
-      { description: "Step 14: From the three emails sent, take screenshots of approval responses from each recipient." },
-      { description: "Step 15: Share screenshots of approval responses with Sapna for record-keeping or next steps." }
+      { description: "Step 1: Connect to the VPN to ensure secure access to the system.", imageUrl: "/images/bom/vpn.jpeg" },
+      { description: "Step 2: Open Windchill and log in using your credentials." , imageUrl: "/images/bom/windchill.jpeg"},
+      { description: "Step 3: Navigate to the 'Task' section within Windchill.", imageUrl: "/images/bom/task.jpeg" },
+      { description: "Step 4: Apply the filter to narrow down the relevant tasks.", imageUrl: "/images/bom/filter.jpeg" },
+      { description: "Step 5: Click on 'Acknowledgement' to access specific content.", imageUrl: "/images/bom/aknowledgement.jpeg" },
+      { description: "Step 6: Select the required content.", imageUrl: "/images/bom/content.jpeg" },
+      { description: "Step 7: Download the Excel sheet.", imageUrl: "/images/bom/dwd_exc.jpeg" },
+      { description: "Step 8: Return to the 'Task' section and apply the filter again.", imageUrl: "/images/bom/filter.jpeg" },
+      { description: "Step 9: Click on the second ECN number and download another Excel sheet." , imageUrl: "/images/bom/dwd_exc.jpeg"},
+      { description: "Step 10: Publish the downloaded files to the department for review or further processing." , imageUrl: "/images/bom/publish.jpeg"},
+      { description: "Step 11: Merge all files for the day into a single document and create an MM file." , imageUrl: "/images/bom/mm.jpeg"},
+      { description: "Step 12: Send an email with the MM file to Pankaj for further actions.", imageUrl: "/images/bom/pankaj.jpeg" },
+      { description: "Step 13: Send an email with relevant details to Rashe Shyam for updates." , imageUrl: "/images/bom/rs.jpeg"},
+      { description: "Step 14: Send an email with necessary information to Rakesh for review or approval." , imageUrl: "/images/bom/rakesh.jpeg"},
+      { description: "Step 15: From the three emails sent, take screenshots of approval responses from each recipient and mail those to sapna." , imageUrl: "/images/bom/sapna.jpeg"},
+
     ],
   };
 
@@ -165,7 +166,18 @@ export const Chat = ({
       { description: "Step 5: Perform FA step 4: Checked PRE AOI board image found abnormality at this location while repairing the board at Pre-AOI, Operator has not placed the component properly which resulted in shift", imageUrl: "/images/ant5fail/1.jpeg"  },
       { description: "Step 6: Perform FA step 5: Checked POST AOI Result found OK because it is under the shield" , imageUrl: "/images/ant5fail/1.jpeg" },
       { description: "Step 7: Perform FA step 6: After that Remount, PCBA got passed" , imageUrl: "/images/ant5fail/1.jpeg" },
-       ],
+    ],
+    "rado_ram_rom_fail": [
+      { description: "Step 1: Confirm the symptom: PCBA fail at DBC Stage matches the report" },
+      { description: "Step 2: Perform FA step 1: Note that the PCBA failed at the DBC stage" },
+      { description: "Step 3: Perform FA step 2: Conduct visual inspection and identify abnormality at location U2903 wrong mount" },
+      { description: "Step 4: Perform FA step 3: Check SPI and confirm no abnormality is found" },
+      { description: "Step 5: Perform FA step 4: Check Pre AOI and identify abnormality at location U2903 at line 6" },
+      { description: "Step 6: Perform FA step 5: Review board image of Pre AOI and confirm abnormality" },
+      { description: "Step 7: Perform FA step 6: Change the part and confirm the PCBA passes" },
+      { description: "Step 8: Identify the root cause: RAM ROM fail at U2903 due to manpower droppage without validating, not offering to IPQS for validation, detected in PRE-AOI but operator bypassed it (process violation)" },
+      { description: "Step 9: Note the corrective action: Provide training to all line mounters regarding body mark PCB version and how to use droppage, and implement 3 layer verification by operator, line leader, and line PQC of the same part then use droppage at line" }
+    ],
     "rado_odm": [
       { description: "Step 1: Confirm the symptom: PCBA fail at DBC Stage , ODM FAIL", imageUrl: "/images/ant5fail/1.jpeg"  },
       { description: "Step 2: Perform FA step 1: PCBA got Failed At DBC stage", imageUrl: "/images/ant5fail/1.jpeg"  },
@@ -275,6 +287,18 @@ export const Chat = ({
       { description: "Step 8: Perform FA step 7: Remount the part and confirm the PCBA passes" },
       { description: "Step 9: Identify the root cause: Uplift – C5208" },
       { description: "Step 10: Note the corrective action: Keep monitoring" }
+    ],
+    "al5_lte_mtk_cal": [
+      { description: "Step 1: Confirm the symptom: PCBA fail at CAL Stage matches the report" },
+      { description: "Step 2: Perform FA step 1: Note that the PCBA failed at the CAL stage" },
+      { description: "Step 3: Perform FA step 2: Conduct visual inspection and confirm it is OK" },
+      { description: "Step 4: Perform FA step 3: Check SPI result and confirm it is OK" },
+      { description: "Step 5: Perform FA step 4: Check Pre-AOI result and confirm it is OK" },
+      { description: "Step 6: Perform FA step 5: Review Pre-AOI board image and identify excess solder at C4229" },
+      { description: "Step 7: Perform FA step 6: TRC person removes shield and identifies C4229 shift" },
+      { description: "Step 8: Perform FA step 7: TRC person remounts C4229 and confirms the board passes" },
+      { description: "Step 9: Identify the root cause: C4229 shift due to excess solder" },
+      { description: "Step 10: Note the corrective action: Replace the nozzle in the mounter and keep monitoring" }
     ],
     "wait_for_blan_network_device_arrival_1": [
       { description: "Step 1: Check in X Ray of that PCB and found shielded and component short at location SH3304 & C1806 (refer to Fig. 1)" },
