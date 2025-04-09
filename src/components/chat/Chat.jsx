@@ -133,7 +133,7 @@ export const Chat = ({
       { description: "Step 6: Perform FA step 5: Check Pre AOI board image and identify abnormality (C1224 shift in 36104)" , imageUrl: "/images/ant5fail/1.jpeg" },
       { description: "Step 7: Perform FA step 6: Check Post AOI result and confirm it is OK", imageUrl: "/images/ant5fail/1.jpeg"  },
       { description: "Step 8: Perform FA step 7: After remount, confirm that the PCBA passed", imageUrl: "/images/ant5fail/1.jpeg"  },
-      { description: "Step 9: Identify the root cause: Shift at location C1224" , imageUrl: "/images/ant5fail/1.jpeg" },
+      { description: "Step 9: Identify the root cause: Shift at location C1224" , imagerl: "/images/ant5fail/1.jpeg" },
       { description: "Step 10: Note the corrective action: Position has been changed from 0.000 to 0.010 in x direction", imageUrl: "/images/ant5fail/1.jpeg"  },
     ],
     "rado_lte_cal_mtk": [
