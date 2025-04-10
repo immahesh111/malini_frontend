@@ -370,7 +370,31 @@ export const Chat = ({
       { description: "Step 21: Check for the failure and perform the rework",imageUrl: "/images/sec60/layout.jpeg" },
       { description: "Step 22: Send the PCBA for testing again",imageUrl: "/images/sec60/layout.jpeg" },
       { description: "Step 23: If the test is OK, send the PCBA to production; if it is NG, send it back to TRC",imageUrl: "/images/sec60/error_image.jpeg" }
-    ]
+    ],
+
+    // FA Steps
+    "wifi_ant3_n_bw20_mcs7_ch7_c1_p17.5_cal": [
+      { description: "Step 1: Confirm the fail symptom: Offline test & check the fail is duplicated", imageUrl: "/images/compal/Picture28.jpeg" },
+      { description: "Step 2: Logfile check WIFI_Ant3_N_BW20 (Pic1)", imageUrl: "/images/compal/ Picture28.jpeg" },
+      { description: "Step 3: X-Ray examination found abnormal WIFI function block U12005 pin has air bubbles (Pic2)", imageUrl: "/images/compal/ Picture29.jpeg" },
+      { description: "Step 4: Re-heat IC U12005 & re-test same FAIL (the fail not follow IC)", imageUrl: "/images/compal/ Picture30.jpeg" },
+      { description: "Step 5: Remove U12005, re-ball pins soldering, re-mount IC on MLB & re-test PASS all function (Pic3)", imageUrl: "/images/compal/ Picture31.jpeg" },
+      { description: "Step 6: History check U12005 remount, retest PASS in CVI, DR: Jun/12dpm (Jul/11/Aug/8dpm)", imageUrl: "/images/compal/ Picture32.jpeg" },
+      { description: "Step 7: Loop test: Verification reliability of the product: 10 times PASS (Logfile)", imageUrl: "/images/compal/ Picture32.jpeg" }
+    ],
+
+    // FA Steps
+"flash bootloader fail" : [
+  { description: "Step 1: Confirm the fail symptom: Offline test & check the fail is duplicated", imageUrl: "/images/compal/ Picture2.jpeg" },
+  { description: "Step 2: Logic check: Flash Bootloader Fail (Pic1)", imageUrl: "/images/compal/ Picture2.jpeg" },
+  { description: "Step 3: X-Ray check found no abnormal (Pic1)", imageUrl: "/images/compal/ Picture3.jpeg" },
+  { description: "Step 4: Electrical measurement does not detect abnormalities", imageUrl: "/images/compal/ Picture3.jpeg " },
+  { description: "Step 5: Visual inspection & CCD discovered U14004 component damage (cracked part) (Pic2)", imageUrl: "/images/compal Picture4.jpeg" },
+  { description: "Step 6: Replacement new component, re-test -> PASS", imageUrl: "/images/compal/ Picture4.jpeg " },
+  { description: "Step 7: NXT mounter setting ??", imageUrl: "/images/compal/ Picture5.jpeg " },
+  { description: "Step 8: Confirm Pre_AOI is ??", imageUrl: "/images/compal/ Picture5.jpeg " },
+  { description: "Step 9: Confirm POST_AOI have shield, can't inspection it", imageUrl: "/images/compal/ Picture5.jpeg " }
+]
 
     // Add more error codes here in the future, e.g.,
     // "another_error_code": [

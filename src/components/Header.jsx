@@ -65,4 +65,6 @@ const headingStyle1 = {
   borderRadius: "5px", // Optional: adds rounded corners to the background
 };
 
+
+
 export default Header;
