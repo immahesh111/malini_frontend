@@ -318,7 +318,7 @@ export const Chat = ({
       { description: "Step 7: Identify the root cause: PCBA failure due to bad material at location FL6904 (NG Date Code DC-20241005)" },
       { description: "Step 8: Note the improvement action: Use DC-2024103 on the line with no issues, provide feedback to IQC team, and validate with PE team through swap tests in TRC" }
     ],
-    "MTK_SP_FLASH_TOOL_V6_IFLASH_01": [
+    "mtk_sp_flash_tool_v6_iflash_01": [
       { description: "Step 1: Confirm the symptom: PCBA failure at IFLASH stage with 0.58% (355 pcs) fail rate, model KANSAS_5G, location Shorting (U2000)" },
       { description: "Step 2: Perform FA step 1: According to X-ray there is Bridging issue." },
       { description: "Step 3: Perform FA step 2: Check SPI data found there was no any abnormal from Printer side placement." },
@@ -331,7 +331,7 @@ export const Chat = ({
     ],
 
 
-    "PROX_SENSOR_COVERED_BOARD_STATUS": [
+    "prox_sensor_covered_board_status": [
       { description: "Step 1: Perform the rework on the Main PCBA",imageUrl: "/images/sec60/error_image.jpeg" },
       { description: "Step 2: Conduct an X-Ray of the PCBA to identify any part shifting, bridging, sorting misalignment, or other defects" ,imageUrl: "/images/sec60/layout.jpeg"},
       { description: "Step 3: If any component misalignment is found during X-Ray, resolve that error",imageUrl: "/images/sec60/layout.jpeg" },
