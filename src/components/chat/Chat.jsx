@@ -69,6 +69,21 @@ export const Chat = ({
       { description: "Step 15: From the three emails sent, take screenshots of approval responses from each recipient and mail those to sapna." , imageUrl: "/images/bom/sapna.jpeg"},
 
     ],
+    "ldms":[
+      { description: "Step 1: Take FG code from mail", imageUrl: "/images/ldms/fg_codes.jpeg" },
+    { description: "Step 2: Select label after opening LDMS", imageUrl: "/images/ldms/label.jpeg" },
+    { description: "Step 3: Paste FG code in LDMS" , imageUrl: "/images/ldms/paste_fg.jpeg"},
+    { description: "Step 4: Click on query" , imageUrl: "/images/ldms/query.jpeg"},
+    { description: "Step 5: Select all, then do batch download", imageUrl: "/images/ldms/select_all.jpeg" },
+    { description: "Step 6: Deselect one", imageUrl: "/images/ldms/disselect.jpeg" },
+    { description: "Step 7: First open its ID rules by clicking on it", imageUrl: "/images/ldms/id_rules.jpeg" },
+    { description: "Step 8: Take screenshot of both in-house and ODM, then send as per requirement", imageUrl: "/images/ldms/inhouse_odm.jpeg" },
+    { description: "Step 9: 2nd click on preview" , imageUrl: "/images/ldms/preview.jpeg" },
+    { description: "Step 10: Then click on 'download image' " , imageUrl: "/images/ldms/dwd_img.jpeg"},
+    { description: "Step 11: Then click on 'BTW file download'" , imageUrl: "/images/ldms/btw_dwd.jpeg"},
+    { description: "Step 12: Repeat for all ", imageUrl: "/images/ldms/repeat.jpeg" },
+    { description: "Step 13: Do the same for all FG codes", imageUrl: "/images/ldms/fg_code" }
+    ]
   };
 
   // New troubleshooting data structure
@@ -388,7 +403,7 @@ export const Chat = ({
     const loadVoices = () => {
       const availableVoices = window.speechSynthesis.getVoices();
       setVoices(availableVoices);
-      const neerjaVoice =
+      const neerjaVoice = 
         availableVoices.find((voice) =>
           voice.name === "Microsoft Neerja Online (Natural) - English (India) (Preview)"
         ) || availableVoices[0];
