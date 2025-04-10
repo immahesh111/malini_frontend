@@ -142,6 +142,7 @@ function App() {
         "tripti",
         "Jagdish Sir",
         "Jagdeesh Raj Sir",
+        "Founder sunil vachani sir.jpeg"
       ];
       const labeledDescriptors = await Promise.all(
         labels.map(async (label) => {
