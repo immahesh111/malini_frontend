@@ -71,8 +71,6 @@ export const Chat = ({
     ],
   };
 
-
-
   // New troubleshooting data structure
   const troubleshootingData = {
     "ant_5_fail": [
@@ -333,6 +331,32 @@ export const Chat = ({
     ],
 
 
+    "PROX_SENSOR_COVERED_BOARD_STATUS": [
+      { description: "Step 1: Perform the rework on the Main PCBA",imageUrl: "/images/sec60/error_image.jpeg" },
+      { description: "Step 2: Conduct an X-Ray of the PCBA to identify any part shifting, bridging, sorting misalignment, or other defects" ,imageUrl: "/images/sec60/layout.jpeg"},
+      { description: "Step 3: If any component misalignment is found during X-Ray, resolve that error",imageUrl: "/images/sec60/layout.jpeg" },
+      { description: "Step 4: If X-Ray is OK, proceed to TRC to determine the root cause of the error",imageUrl: "/images/sec60/error_image.jpeg" },
+      { description: "Step 5: Manually check the proximity sensor functionality using ZIG" ,imageUrl: "/images/sec60/layout.jpeg"},
+      { description: "Step 6: If the proximity sensor is working fine, proceed to the next step",imageUrl: "/images/sec60/layout.jpeg" },
+      { description: "Step 7: Send the PCBA for re-testing" ,imageUrl: "/images/sec60/layout.jpeg"},
+      { description: "Step 8: If the re-test is OK, send the PCBA to production",imageUrl: "/images/sec60/layout.jpeg" },
+      { description: "Step 9: If the re-test fails again, send the PCBA back to TRC",imageUrl: "/images/sec60/error_image.jpeg" },
+      { description: "Step 10: Remove the sensor",imageUrl: "/images/sec60/layout.jpeg" },
+      { description: "Step 11: Check the pad" ,imageUrl: "/images/sec60/layout.jpeg"},
+      { description: "Step 12: Send the PCBA for testing again",imageUrl: "/images/sec60/error_image.jpeg",imageUrl: "/images/sec60/layout.jpeg" },
+      { description: "Step 13: After manual checking, if the PCBA is still failing, proceed to the next step",imageUrl: "/images/sec60/layout.jpeg" },
+      { description: "Step 14: Perform Visual Inspection (VI) on the PCBA",imageUrl: "/images/sec60/layout.jpeg" },
+      { description: "Step 15: Identify any damaged component or uplift",imageUrl: "/images/sec60/layout.jpeg" },
+      { description: "Step 16: Swap the component with an OK component",imageUrl: "/images/sec60/error_image.jpeg" },
+      { description: "Step 17: Conduct another manual check",imageUrl: "/images/sec60/layout.jpeg" },
+      { description: "Step 18: If the manual check is OK, send the PCBA to production" ,imageUrl: "/images/sec60/layout.jpeg"},
+      { description: "Step 19: If the manual check is NG, check the connections and components using a multimeter",imageUrl: "/images/sec60/layout.jpeg" },
+      { description: "Step 20: Open the shield",imageUrl: "/images/sec60/error_image.jpeg" ,imageUrl: "/images/sec60/layout.jpeg"},
+      { description: "Step 21: Check for the failure and perform the rework",imageUrl: "/images/sec60/layout.jpeg" },
+      { description: "Step 22: Send the PCBA for testing again",imageUrl: "/images/sec60/layout.jpeg" },
+      { description: "Step 23: If the test is OK, send the PCBA to production; if it is NG, send it back to TRC",imageUrl: "/images/sec60/error_image.jpeg" }
+    ]
+
     // Add more error codes here in the future, e.g.,
     // "another_error_code": [
     //   { description: "Step 1: ...", imageUrl: "/images/another/step1.jpg" },
@@ -496,8 +520,6 @@ export const Chat = ({
         return;
       }
     }
-
-
 
 
 
