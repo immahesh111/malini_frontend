@@ -70,7 +70,7 @@ export const Chat = ({
 
     ],
     "ldms":[
-      { description: "Step 1: Take FG code from mail", imageUrl: "/images/ldms/fg_codes.jpeg" },
+      { description: "Step 1: Take FG code from mail", imageUrl: "/images/ldms/fg_code.jpeg" },
     { description: "Step 2: Select label after opening LDMS", imageUrl: "/images/ldms/label.jpeg" },
     { description: "Step 3: Paste FG code in LDMS" , imageUrl: "/images/ldms/paste_fg.jpeg"},
     { description: "Step 4: Click on query" , imageUrl: "/images/ldms/query.jpeg"},
