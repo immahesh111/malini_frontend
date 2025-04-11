@@ -76,13 +76,14 @@ export const Chat = ({
     { description: "Step 4: Click on query" , imageUrl: "/images/ldms/query.jpeg"},
     { description: "Step 5: Select all, then do batch download", imageUrl: "/images/ldms/select_all.jpeg" },
     { description: "Step 6: Deselect one", imageUrl: "/images/ldms/disselect.jpeg" },
-    { description: "Step 7: First open its ID rules by clicking on it", imageUrl: "/images/ldms/id_rules.jpeg" },
+    { description: "Step 7: If files are NA,First open its ID rules by clicking on it , IF dOMESTIC , directly do for preview", imageUrl: "/images/ldms/id_rules.jpeg" },
     { description: "Step 8: Take screenshot of both in-house and ODM, then send as per requirement", imageUrl: "/images/ldms/inhouse_odm.jpeg" },
-    { description: "Step 9: 2nd click on preview" , imageUrl: "/images/ldms/preview.jpeg" },
+    { description: "Step 9:  2nd click on preview , If files are NA then skip step 13, If domestic then also follow step 13" , imageUrl: "/images/ldms/preview.jpeg" },
     { description: "Step 10: Then click on 'download image' " , imageUrl: "/images/ldms/dwd_img.jpeg"},
-    { description: "Step 11: Then click on 'BTW file download'" , imageUrl: "/images/ldms/btw_dwd.jpeg"},
-    { description: "Step 12: Repeat for all ", imageUrl: "/images/ldms/repeat.jpeg" },
-    { description: "Step 13: Do the same for all FG codes", imageUrl: "/images/ldms/fg_code" }
+    { description: "Step 11: Then click on 'BTW file download',,  " , imageUrl: "/images/ldms/btw_dwd.jpeg"},
+   { description: "Step 12: Repeat for all ", imageUrl: "/images/ldms/repeat.jpeg" },
+   { description: "Step 13: If it is domestic with a carton level , then scroll down and take screen shot of MRP Label also ", imageUrl: "/images/ldms/preview.jpeg" },
+    { description: "Step 14: Do the same for all FG codes", imageUrl: "/images/ldms/fg_code,jpeg" },  
     ]
   };
 
