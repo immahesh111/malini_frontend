@@ -81,9 +81,9 @@ export const Chat = ({
     { description: "Step 9:  2nd click on preview , If files are NA then skip step 13, If domestic then also follow step 13" , imageUrl: "/images/ldms/preview.jpeg" },
     { description: "Step 10: Then click on 'download image' " , imageUrl: "/images/ldms/dwd_img.jpeg"},
     { description: "Step 11: Then click on 'BTW file download',,  " , imageUrl: "/images/ldms/btw_dwd.jpeg"},
-   { description: "Step 12: Repeat for all ", imageUrl: "/images/ldms/repeat.jpeg" },
+   { description: "Step 12: Repeat for all ", imageUrl: "/images/ldms/repeat.png" },
    { description: "Step 13: If it is domestic with a carton level , then scroll down and take screen shot of MRP Label also ", imageUrl: "/images/ldms/preview.jpeg" },
-    { description: "Step 14: Do the same for all FG codes", imageUrl: "/images/ldms/fg_code,jpeg" },  
+    { description: "Step 14: Do the same for all FG codes", imageUrl: "/images/ldms/fg_code.jpeg" },  
     ]
   };
 
