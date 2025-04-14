@@ -385,7 +385,7 @@ export const Chat = ({
     ],
 
     // FA Steps
-"flash bootloader fail" : [
+"flash_bootloader_fail" : [
   { description: "Step 1: Confirm the fail symptom: Offline test & check the fail is duplicated", imageUrl: "/images/compal/Picture2.png" },
   { description: "Step 2: Logic check: Flash Bootloader Fail (Pic1)", imageUrl: "/images/compal/Picture2.png" },
   { description: "Step 3: X-Ray check found no abnormal (Pic1)", imageUrl: "/images/compal/Picture3.png" },
@@ -446,13 +446,13 @@ export const Chat = ({
     { description: "Step 7: Run loop test 10 times to verify reliability; all tests pass.", imageUrl: "/images/compal/Picture32.png" }
 ],
 
-"WIFI_Ant3_N_BW20_MCS7_CH7_C1_P17.5_cal":[
+"wifi_ant3_n_bw20_mcs7_ch7_c1_p17.5_cal1":[
     { description: "Step 1: Test the device offline to confirm the failure happens consistently.", imageUrl: "/images/compal/Pic1.png" },
     { description: "Step 2: Check the logfile to identify the issue.", imageUrl: "/images/compal/Pic1.png" },
     { description: "Step 3: Inspect the WIFI block visually; found missing components C10076 and C10067.", imageUrl: "/images/compal/Picture33.png" }
 ],
 
-"modem_ic_id" :[
+"modem_ic_id3" :[
     { description: "Step 1: Test the device offline to confirm the failure happens consistently.", imageUrl: "/images/compal/Picture1.png" },
     { description: "Step 2: Check the logfile; found issue with Modem IC ID.", imageUrl: "/images/compal/Picture1.png" },
     { description: "Step 3: Inspect U24001, U24000, U11000, U14006 with visual check and X-ray; no issues found.", imageUrl: "/images/compal/Picture1.png" },
