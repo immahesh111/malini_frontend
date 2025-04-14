@@ -395,7 +395,95 @@ export const Chat = ({
   { description: "Step 7: NXT mounter setting ??", imageUrl: "/images/compal/Picture5.png " },
   { description: "Step 8: Confirm Pre_AOI is ??", imageUrl: "/images/compal/Picture5.png" },
   { description: "Step 9: Confirm POST_AOI have shield, can't inspection it", imageUrl: "/images/compal/Picture5.png" }
-]
+],
+
+"smt_rf_cell":[
+    { description: "Step 1: Test the device offline to confirm the failure happens consistently.", imageUrl: "/images/compal/Picture6.png" },
+    { description: "Step 2: Check the logfile; found ATNA failure.", imageUrl: "/images/compal/Picture6.png" },
+    { description: "Step 3: Use X-ray to check inside; no damage found.", imageUrl: "/images/compal/Picture7.png" },
+    { description: "Step 4: Test electrical signals with a tool; no problems found.", imageUrl: "/images/compal/Picture8.png" },
+    { description: "Step 5: Inspect with a camera; found connector pin is dirty.", imageUrl: "/images/compal/Picture9.png" },
+    { description: "Step 6: Clean the connector pin and retest; test passes.", imageUrl: "/images/compal/Picture9.png" },
+    { description: "Step 7: Check IPC for dust measurement to avoid future issues.", imageUrl: "/images/compal/Picture9.png" },
+    { description: "Step 8: Review next steps to ensure no further issues .", imageUrl: "/images/compal/Picture9.png" }
+ ],
+
+ "lte_l-b20_mch24300_txmainca1_ant0_bw10_qpsk_12rb@19_txpmax_tx_power" :[
+    { description: "Step 1: Test the device offline to confirm the failure happens consistently.", imageUrl: "/images/compal/Picture11.png" },
+    { description: "Step 2: Check the logfile; found ANTO test failure.", imageUrl: "/images/compal/Picture11.png" },
+    { description: "Step 3: Use X-ray to check inside; found RF shield missing L11123 part.", imageUrl: "/images/compal/Picture12.png" },
+    { description: "Step 4: Remove the cover; found the component misaligned.", imageUrl: "/images/compal/Picture13.png" },
+    { description: "Step 5: Repair the component and retest; all functions pass.", imageUrl: "/images/compal/Picture14.png" }
+],
+
+"check_usb_mode":[
+    { description: "Step 1: Test the device offline to confirm the failure happens consistently.", imageUrl: "/images/compal/Picture15.png" },
+    { description: "Step 2: Check the logfile; found USB mode test failure.", imageUrl: "/images/compal/Picture15.png" },
+    { description: "Step 3: Use an oscilloscope to test AP_CLK and 76BPM_IN signals; found abnormal waveform.", imageUrl: "/images/compal/Picture16.png,/images/compal/Picture17.png" },
+    { description: "Step 4: Use X-ray to check SOC (U14006); found solder issues.", imageUrl: "/images/compal/Picture18.png,/images/compal/Picture19.png" },
+    { description: "Step 5: Remove the SOC; found foreign material at the bottom.", imageUrl: "/images/compal/Picture20.png" }
+],
+
+"modem_ic_id" :[
+    { description: "Step 1: Check the logfile to confirm the failure is related to Modem IC ID.", imageUrl: "/images/compal/Picture22.png" },
+    { description: "Step 2: Inspect Modem blocks (U24000, U24001, U24005) with visual check and X-ray; no process or soldering issues found.", imageUrl: "/images/compal/Picture23.png,/images/compal/Picture24.png,/images/compal/Picture25.png" },
+    { description: "Step 3: Test in offline debug mode; passes. Retest on the line 10 times with different testers; all pass normally.", imageUrl: "/images/compal/Picture25.png" }
+],
+
+"modem_ic_id2":[
+    { description: "Step 1: Test the device offline to confirm the failure happens consistently.", imageUrl: "/images/compal/Picture26.png" },
+    { description: "Step 2: Check the logfile; found issue with Modem IC ID.", imageUrl: "/images/compal/Picture26.png" },
+    { description: "Step 3: Inspect visually; found excess component on U11000.", imageUrl: "/images/compal/Picture27.png" }
+],
+
+"wifi_ant3_n_bw20_mcs7_ch7_c1_p17.5_cal" :[
+    { description: "Step 1: Test the device offline to confirm the failure happens consistently.", imageUrl: "/images/compal/Picture28.png" },
+    { description: "Step 2: Check the logfile; found issue with WIFI_Ant3_N_BW20.", imageUrl: "/images/compal/Picture28.png" },
+    { description: "Step 3: Use X-ray to check; found air bubbles in U12005 WIFI function block pins.", imageUrl: "/images/compal/Picture29.png" },
+    { description: "Step 4: Reheat IC U12005 and retest; still fails (issue not tied to IC).", imageUrl: "/images/compal/Picture30.png" },
+    { description: "Step 5: Remove U12005, re-ball pins, re-solder, re-mount on MLB, and retest; all functions pass.", imageUrl: "/images/compal/Picture31.png" },
+    { description: "Step 6: Check history; U12005 remount and retest pass in CVI.", imageUrl: "/images/compal/Picture32.png" },
+    { description: "Step 7: Run loop test 10 times to verify reliability; all tests pass.", imageUrl: "/images/compal/Picture32.png" }
+],
+
+"WIFI_Ant3_N_BW20_MCS7_CH7_C1_P17.5_cal":[
+    { description: "Step 1: Test the device offline to confirm the failure happens consistently.", imageUrl: "/images/compal/Pic1.png" },
+    { description: "Step 2: Check the logfile to identify the issue.", imageUrl: "/images/compal/Pic1.png" },
+    { description: "Step 3: Inspect the WIFI block visually; found missing components C10076 and C10067.", imageUrl: "/images/compal/Picture33.png" }
+],
+
+"modem_ic_id" :[
+    { description: "Step 1: Test the device offline to confirm the failure happens consistently.", imageUrl: "/images/compal/Picture1.png" },
+    { description: "Step 2: Check the logfile; found issue with Modem IC ID.", imageUrl: "/images/compal/Picture1.png" },
+    { description: "Step 3: Inspect U24001, U24000, U11000, U14006 with visual check and X-ray; no issues found.", imageUrl: "/images/compal/Picture1.png" },
+    { description: "Step 4: Perform failure analysis on the main logic board (MLB).", imageUrl: "/images/compal/Picture1.png" },
+    { description: "Step 4.1: Remove IC-U24001 and retest; still fails.", imageUrl: "/images/compal/Picture1.png" },
+    { description: "Step 4.2: Replace IC-U24001 with a new one on the defective MLB and retest; test passes.", imageUrl: "/images/compal/Picture1.png" },
+    { description: "Step 4.3: Move the defective MLB's IC to a working MLB and retest; test fails.", imageUrl: "/images/compal/Picture1.png" }
+],
+
+"scan_rf_component_test_by_edb":[
+    { description: "Step 1: Test the device to confirm the failure happens consistently.", imageUrl: "/images/compal/Pic1.png" },
+    { description: "Step 2: Inspect the main logic board (MLB) visually; found it cracked.", imageUrl: "/images/compal/Picture34.png" },
+    { description: "Step 3: Retest at T1 station; test fails with error code SCAN_RF_COMPONENT_TEST_by_edb.", imageUrl: "/images/compal/Picture35.png" },
+    { description: "Step 4: Check SMT history in logfile; result is pass.", imageUrl: "/images/compal/Picture35.png" },
+    { description: "Step 5: Review SMT/SPI, Pre-AOI, and AOI images; no crack issues found in history.", imageUrl: "/images/compal/Picture37.png" }
+],
+"gyro_z_scale temp_nonlinearity": [
+    { description: "Step 1: Test the device to confirm the failure happens consistently.", imageUrl: "/images/compal/Pic1.png" },
+    { description: "Step 2: Run FATPMU-T1 test; all functions pass.", imageUrl: "/images/compal/Pic1.png" },
+    { description: "Step 3: Inspect the main logic board (MLB) visually; no issues found.", imageUrl: "/images/compal/Pic1.png" },
+    { description: "Step 4: Use X-ray to check all ICs and U24001; no breakage or soldering problems found.", imageUrl: "/images/compal/Picture38.png" },
+    { description: "Step 5: Check AOI history; no issues found.", imageUrl: "/images/compal/Picture38.png" }
+],
+
+"faSteps" : [
+    { description: "Step 1: Test Modem function using commands; test fails.", imageUrl: "/images/compal/Picture39.png" },
+    { description: "Step 2: Inspect U24001 solder ball visually and with X-ray.", imageUrl: "/images/compal/Picture39.png" },
+    { description: "Step 3: Use CT scan; result shows no trouble found (NTF).", imageUrl: "/images/compal/Picture39.png" },
+    { description: "Step 4: Perform swap test; failure follows component U24001.", imageUrl: "/images/compal/Picture39.png" }
+],
+
 
     // Add more error codes here in the future, e.g.,
     // "another_error_code": [
