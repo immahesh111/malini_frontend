@@ -519,7 +519,7 @@ export const Chat = ({
       const neerjaVoice = 
         availableVoices.find((voice) =>
           voice.name === "Microsoft Neerja Online (Natural) - English (India) (Preview)"
-        ) || availableVoices[0];
+        ) || availableVoices[1];
       if (neerjaVoice) setSelectedVoice(neerjaVoice);
     };
     loadVoices();
