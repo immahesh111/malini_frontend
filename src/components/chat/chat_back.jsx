@@ -516,69 +516,14 @@ export const Chat = ({
     const loadVoices = () => {
       const availableVoices = window.speechSynthesis.getVoices();
       setVoices(availableVoices);
-
-      // List of preferred female voice names across different platforms
-      const preferredVoices = [
-        // Microsoft Windows voices
-        "Microsoft Neerja Online (Natural) - English (India) (Preview)",
-        "Microsoft Zira Desktop - English (United States)",
-        // macOS/iOS voices  
-        "Samantha",
-        "Karen",
-        "Moira",
-        "Tessa",
-        // Chrome OS voices
-        "Google UK English Female",
-        "Google US English Female",
-        // Generic voices
-        "female",
-        "woman"
-      ];
-
-      // Try to find a female voice
-      let selectedVoice = null;
-
-      // First try to find voices that explicitly say "female" in name or language
-      selectedVoice = availableVoices.find(voice => 
-        voice.name.toLowerCase().includes("female") ||
-        preferredVoices.includes(voice.name)
-      );
-
-      // If no explicit female voice found, try to find by checking voice.gender
-      if (!selectedVoice) {
-        selectedVoice = availableVoices.find(voice => 
-          voice.gender === "female" || 
-          voice.gender === "Female"
-        );
-      }
-
-      // Fallback to first voice that contains feminine names
-      if (!selectedVoice) {
-        selectedVoice = availableVoices.find(voice =>
-          voice.name.match(/(?:Karen|Susan|Mary|Jane|Anna|Lisa|Amy|Emma|Sarah|female|woman)/i)
-        );
-      }
-
-      // If still no female voice found, use the first available voice
-      if (!selectedVoice && availableVoices.length > 0) {
-        selectedVoice = availableVoices[0];
-        console.warn("No female voice found, using default voice:", selectedVoice.name);
-      }
-
-      if (selectedVoice) {
-        setSelectedVoice(selectedVoice);
-        console.log("Selected voice:", selectedVoice.name);
-      }
+      const neerjaVoice = 
+        availableVoices.find((voice) =>
+          voice.name === "Microsoft Neerja Online (Natural) - English (India) (Preview)"
+        ) || availableVoices[0];
+      if (neerjaVoice) setSelectedVoice(neerjaVoice);
     };
-
-    // Initial load
     loadVoices();
-
-    // Handle dynamic voice loading
-    if (window.speechSynthesis.onvoiceschanged !== undefined) {
-      window.speechSynthesis.onvoiceschanged = loadVoices;
-    }
-
+    window.speechSynthesis.onvoiceschanged = loadVoices;
     return () => {
       window.speechSynthesis.onvoiceschanged = null;
     };
@@ -637,32 +582,17 @@ export const Chat = ({
 
   const speak = (text) => {
     if (showVideo || !text) return;
-    
-    // Cancel any ongoing speech
-    window.speechSynthesis.cancel();
-
+    const synthesis = window.speechSynthesis;
     const utterance = new SpeechSynthesisUtterance(text);
 
-    if (selectedVoice) {
-      utterance.voice = selectedVoice;
-    }
-
-    // Force feminine voice characteristics
-    utterance.pitch = 1.2; // Slightly higher pitch
-    utterance.rate = 1.0; // Normal rate
-    utterance.volume = 1.0; // Full volume
+    if (selectedVoice) utterance.voice = selectedVoice;
+    utterance.pitch = 1;
+    utterance.rate = 1;
 
     utterance.onstart = () => setIsSpeaking(true);
     utterance.onend = () => setIsSpeaking(false);
-    utterance.onerror = (error) => {
-      console.error("Speech synthesis error:", error);
-      setIsSpeaking(false);
-    };
 
-    // Add a slight delay to ensure voice is applied
-    setTimeout(() => {
-      window.speechSynthesis.speak(utterance);
-    }, 100);
+    synthesis.speak(utterance);
   };
 
   useEffect(() => {
@@ -833,7 +763,7 @@ export const Chat = ({
       const videoMapping = {
         "smt process": "6_8EqJXzpXo",
         "pick and place mounter": "M2V7sUfwxpY",
-               "aoi": "cI7MyFLv6dA",
+        "aoi": "cI7MyFLv6dA",
         "screen printer": "ylVXhrGE55c",
         "mounter": "MoukIPQa58Q",
       };
