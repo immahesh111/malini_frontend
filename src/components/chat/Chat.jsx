@@ -685,6 +685,11 @@ export const Chat = ({
     e.preventDefault();
     const lowerInput = userInput.toLowerCase().trim();
 
+    // Add input validation
+    if (!userInput.trim()) {
+      return;
+    }
+
     // Handle guide commands (general guide or troubleshooting)
     // if (lowerInput.startsWith("guide")) {
     //   setCurrentGuideSteps(guideSteps);
@@ -832,6 +837,7 @@ export const Chat = ({
       const topic = lowerInput.replace("introduce", "").trim();
       const videoMapping = {
         "smt process": "6_8EqJXzpXo",
+       
         "pick and place mounter": "M2V7sUfwxpY",
                "aoi": "cI7MyFLv6dA",
         "screen printer": "ylVXhrGE55c",
@@ -853,13 +859,36 @@ export const Chat = ({
       const response = await axios.post(
         "https://malini-backend.onrender.com/api/chatgpt",
         { message: userInput },
-        { headers: { "Content-Type": "application/json" } }
+        { 
+          headers: { "Content-Type": "application/json" },
+          timeout: 30000 // 30 second timeout
+        }
       );
-      const generatedText = response.data.response;
-      setChatHistory([...chatHistory, { user: userInput, bot: generatedText }]);
-      setUserInput("");
+
+      if (response.data && response.data.response) {
+        setChatHistory([...chatHistory, { 
+          user: userInput, 
+          bot: response.data.response 
+        }]);
+        setUserInput("");
+      } else {
+        throw new Error("Invalid response format");
+      }
     } catch (error) {
-      console.error("Error:", error);
+      console.error("API Error:", error);
+      
+      // Add user-friendly error message to chat
+      const errorMessage = error.response?.status === 400 
+        ? "I couldn't process that request. Could you please rephrase it?"
+        : "I'm having trouble connecting right now. Please try again in a moment.";
+    
+      setChatHistory([...chatHistory, { 
+        user: userInput,
+        bot: errorMessage
+      }]);
+    
+      // Clear input on error
+      setUserInput("");
     } finally {
       setLoading(false);
     }
