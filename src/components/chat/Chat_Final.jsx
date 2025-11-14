@@ -920,8 +920,8 @@ export const Chat = ({
                 {chatHistory.length === 0 ? (
                   <p className="welcome-message">
                     {userName
-                      ? `Welcome, ${userName}! Ask a question to start a conversation with the Padget AI Assistant Malini.`
-                      : "Welcome to the chat! Ask a question to start a conversation with the Padget AI Assistant Malini."}
+                      ? `Welcome, ${userName}! Ask a question to start a conversation with the Padget AI Assistant Priya.`
+                      : "Welcome to the chat! Ask a question to start a conversation with the Padget AI Assistant Priya."}
                   </p>
                 ) : (
                   chatHistory.map((chat, index) => (
@@ -933,7 +933,7 @@ export const Chat = ({
                       )}
                       {chat.bot && (
                         <p className="teacher-response">
-                          <strong>Malini:</strong> {chat.bot}
+                          <strong>Priya:</strong> {chat.bot}
                         </p>
                       )}
                     </div>
