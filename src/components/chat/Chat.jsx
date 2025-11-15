@@ -586,7 +586,7 @@ export const Chat = ({
 
   useEffect(() => {
     if (userName && chatHistory.length === 0) {
-      const welcomeMessage = `Welcome, It is my great honor and privilege to welcome our esteemed ${userName}, to this special demonstration of our Center of Excellence (COE) powered by AI. We Welcome you to our Grand Inaguration. At Padget, we take immense pride in our journey—from being a key player in the Make in India initiative to becoming a recognized leader in mobile production. With cutting-edge technology, a dedicated team, and a relentless pursuit of quality, we have built a strong foundation for the future. Today’s visit is a special occasion as we showcase our state-of-the-art product gallery, our roadmap for innovation, and the milestones that define our success. Your guidance and leadership continue to inspire us as we strive for greater efficiency, sustainability, and global expansion.`;
+      const welcomeMessage = `Welcome, It is my great honor and privilege to welcome our esteemed ${userName}, to this special demonstration of our Center of Excellence (COE) powered by AI. We Welcome you to our Grand Inaguration. At Volta UdAI, we take immense pride in our journey—from being a key player in the Make in India initiative to becoming a recognized leader in mobile production. With cutting-edge technology, a dedicated team, and a relentless pursuit of quality, we have built a strong foundation for the future. Today’s visit is a special occasion as we showcase our state-of-the-art product gallery, our roadmap for innovation, and the milestones that define our success. Your guidance and leadership continue to inspire us as we strive for greater efficiency, sustainability, and global expansion.`;
       setChatHistory([{ bot: welcomeMessage }]);
       speak(welcomeMessage);
     }
@@ -920,8 +920,8 @@ export const Chat = ({
                 {chatHistory.length === 0 ? (
                   <p className="welcome-message">
                     {userName
-                      ? `Welcome, ${userName}! Ask a question to start a conversation with the Padget AI Assistant Priya.`
-                      : "Welcome to the chat! Ask a question to start a conversation with the Padget AI Assistant Priya."}
+                      ? `Welcome, ${userName}! Ask a question to start a conversation with the Priya Assistant Priya.`
+                      : "Welcome to the chat! Ask a question to start a conversation with the Priya AI Assistant Priya."}
                   </p>
                 ) : (
                   chatHistory.map((chat, index) => (
